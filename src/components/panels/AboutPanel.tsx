@@ -47,20 +47,47 @@ export default function AboutPanel() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
+          style={{ perspective: '800px' }}
         >
-          {/* Photo with vignette */}
-          <div className="absolute inset-[-20%] flex items-center justify-center overflow-hidden">
+          {/* Shadow/depth layer behind */}
+          <div className="absolute inset-[-25%] flex items-center justify-center overflow-hidden" style={{ zIndex: 1 }}>
             <img
               src={josePole}
-              alt="Jose Maria performing on pole"
-              className="h-full w-full object-cover relative z-10"
+              alt=""
+              aria-hidden
+              className="h-full w-full object-cover"
               style={{
-                filter: 'brightness(0.85) contrast(1.2) saturate(0.8)',
-                maskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
+                filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(6px)',
+                maskImage: 'radial-gradient(ellipse 48% 52% at 50% 50%, black 10%, transparent 60%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 48% 52% at 50% 50%, black 10%, transparent 60%)',
+                transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
           </div>
+
+          {/* Main figure — popping forward */}
+          <div className="absolute inset-[-20%] flex items-center justify-center overflow-hidden" style={{ zIndex: 10, transformStyle: 'preserve-3d' }}>
+            <img
+              src={josePole}
+              alt="Jose Maria performing on pole"
+              className="h-full w-full object-cover"
+              style={{
+                filter: 'brightness(0.95) contrast(1.3) saturate(0.9)',
+                maskImage: 'radial-gradient(ellipse 42% 47% at 50% 48%, black 25%, transparent 65%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 42% 47% at 50% 48%, black 25%, transparent 65%)',
+                transform: 'translateZ(30px) scale(1.06)',
+              }}
+            />
+          </div>
+
+          {/* Edge highlight glow */}
+          <div
+            className="absolute inset-0"
+            style={{
+              zIndex: 5,
+              background: 'radial-gradient(ellipse 35% 45% at 52% 48%, rgba(120,160,220,0.04) 0%, transparent 70%)',
+            }}
+          />
 
           {/* Orbiting tags — centered on the figure */}
           <div className="absolute inset-0" style={{ zIndex: 20 }}>
