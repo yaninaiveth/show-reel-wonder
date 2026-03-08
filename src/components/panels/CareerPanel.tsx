@@ -11,7 +11,7 @@ const items = [
 
 export default function CareerPanel() {
   return (
-    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center px-[6vw] bg-ink max-md:py-16">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center px-[6vw] bg-ink max-md:py-16 max-md:-mt-24">
       <div className="w-full">
         <div className="mb-[clamp(1.2rem,2.5vw,3rem)]">
           <motion.div
