@@ -41,7 +41,7 @@ export default function OrbitingTags({ radiusX = 140, radiusZ = 70, speed = 16 }
 
       lines.forEach((line, li) => {
         const chars = line.split('');
-        const charSpan = 5;
+        const charSpan = 6;
         const totalSpan = chars.length * charSpan;
         const startAngle = baseAngle - totalSpan / 2;
         const yOffset = (li - (lines.length - 1) / 2) * 16; // vertical offset for multiline
