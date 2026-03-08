@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import joseImg from '@/assets/jose.jpg';
+import joseImg from '@/assets/jose-hero.jpg';
 import { lazy, Suspense } from 'react';
 
 const CircusScene = lazy(() => import('@/components/CircusScene'));
