@@ -63,7 +63,7 @@ export default function Index() {
     return (
       <div className="w-full min-h-screen bg-ink overflow-y-auto">
         {panels.map((Panel, i) => (
-          <div key={i} className="relative w-full min-h-screen">
+          <div key={i} className="relative w-full">
             <Panel />
           </div>
         ))}
