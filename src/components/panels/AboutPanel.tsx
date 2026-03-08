@@ -5,7 +5,7 @@ import josePole from '@/assets/jose-pole.jpg';
 export default function AboutPanel() {
   return (
     <section className="absolute inset-0 flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden">
-      <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(2rem,5vw,5rem)] max-md:flex-col max-md:gap-8">
+      <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-8">
         {/* Text content — left side */}
         <div className="flex-1 min-w-0 max-md:order-2">
           <motion.div
