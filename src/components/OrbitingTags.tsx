@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 const tags = [
   'Age 29',
-  '1.77m\n85kg',
+  '1.77m · 85kg',
   'Argentine\nPassport',
-  'Spanish\nEnglish',
+  'Spanish · English',
 ];
 
 interface OrbitingTagsProps {
