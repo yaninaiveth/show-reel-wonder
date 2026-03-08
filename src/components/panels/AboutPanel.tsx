@@ -7,7 +7,7 @@ export default function AboutPanel() {
     <section className="absolute inset-0 flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden">
       <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-8">
         {/* Text content — left side */}
-        <div className="flex-1 min-w-0 max-md:order-2">
+        <div className="flex-1 min-w-0 max-md:order-1">
           <div className="font-mono text-[0.58rem] tracking-[0.42em] uppercase text-gold mb-4">
             About
           </div>
@@ -30,11 +30,8 @@ export default function AboutPanel() {
         </div>
 
         {/* Photo + Orbiting Tags — right side */}
-        <motion.div
-          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[380px] max-md:order-1 -ml-[3vw]"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+        <div
+          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[300px] max-md:order-2 -ml-[3vw] max-md:ml-0"
           style={{ perspective: '800px' }}
         >
           {/* Shadow/depth layer behind */}
@@ -85,7 +82,7 @@ export default function AboutPanel() {
               speed={16}
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
