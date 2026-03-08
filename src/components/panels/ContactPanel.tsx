@@ -9,7 +9,7 @@ const contacts = [
 
 export default function ContactPanel() {
   return (
-    <section className="absolute inset-0 flex items-center justify-center text-center px-[6vw] bg-ink">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center text-center px-[6vw] bg-ink max-md:py-16 max-md:min-h-screen">
       {/* Glow */}
       <div
         className="absolute w-[60vw] h-[60vw] rounded-full bottom-[-22vw] left-1/2 -translate-x-1/2 pointer-events-none"
