@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import OrbitingTags from '@/components/OrbitingTags';
-import josePole from '@/assets/jose-pole-dark.jpg';
+import josePole from '@/assets/jose-pole.jpg';
 
 export default function AboutPanel() {
   return (
@@ -48,17 +48,16 @@ export default function AboutPanel() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          {/* Photo — no harsh mask, just soft edge fade */}
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+          {/* Photo with heavy vignette to blend into dark bg */}
+          <div className="absolute inset-[-20%] flex items-center justify-center overflow-hidden">
             <img
               src={josePole}
               alt="Jose Maria performing on pole"
-              className="h-[110%] w-auto object-contain relative z-10"
+              className="h-full w-full object-cover relative z-10"
               style={{
-                filter: 'contrast(1.05) brightness(1.05)',
-                maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%), linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
-                maskComposite: 'intersect',
-                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
+                filter: 'brightness(0.85) contrast(1.2) saturate(0.8)',
+                maskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
               }}
             />
           </div>
