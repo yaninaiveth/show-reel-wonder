@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const tags = ['Age 29', '1.77m · 85kg', 'Argentine Passport', 'Spanish · English'];
+const tags = ['Age 29', '1.77m · 85kg', 'Argentine', 'Spanish · English'];
 
 interface OrbitingTagsProps {
   radiusX?: number;
@@ -8,7 +8,7 @@ interface OrbitingTagsProps {
   speed?: number;
 }
 
-export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }: OrbitingTagsProps) {
+export default function OrbitingTags({ radiusX = 180, radiusZ = 90, speed = 18 }: OrbitingTagsProps) {
   const [angle, setAngle] = useState(0);
   const rafRef = useRef<number>(0);
   const prevTime = useRef<number>(0);
@@ -29,7 +29,7 @@ export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }
   return (
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ perspective: '600px', perspectiveOrigin: '50% 50%' }}
+      style={{ perspective: '800px', perspectiveOrigin: '50% 50%' }}
     >
       <div
         className="absolute inset-0"
@@ -44,18 +44,18 @@ export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }
 
           const zNorm = Math.cos(rad);
 
-          // Opacity: visible in front, fade behind the figure
-          const opacity = zNorm > -0.15 ? Math.min(1, (zNorm + 0.15) * 1.5) : 0;
+          // Opacity: fully visible in front half, fade out behind
+          const opacity = zNorm > -0.1 ? Math.min(1, (zNorm + 0.1) * 1.8) : 0;
 
           // Scale for depth
-          const scale = 0.8 + zNorm * 0.2;
+          const scale = 0.85 + zNorm * 0.15;
 
-          // At the sides (|sinRad| near 1), compress scaleX to bunch letters
+          // ScaleX compression at sides — letters bunch up
           const sinAbs = Math.abs(Math.sin(rad));
-          const scaleX = 1 - sinAbs * 0.6; // strong compression at edges
+          const scaleX = 1 - sinAbs * 0.5;
 
           // Bend rotation
-          const bendAngle = -Math.sin(rad) * 50;
+          const bendAngle = -Math.sin(rad) * 45;
 
           return (
             <div
@@ -64,18 +64,18 @@ export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }
               style={{
                 transform: `translate(-50%, -50%) translate3d(${x}px, 0px, ${z}px) rotateY(${bendAngle}deg) scale(${scale})`,
                 opacity,
-                transition: 'opacity 0.15s ease',
+                transition: 'opacity 0.12s ease',
                 transformStyle: 'preserve-3d',
                 zIndex: Math.round(z + 100),
                 willChange: 'transform, opacity',
               }}
             >
               <span
-                className="font-display text-[0.85rem] uppercase font-extrabold tracking-[0.15em] whitespace-nowrap"
+                className="font-display text-[1rem] uppercase font-black tracking-[0.2em] whitespace-nowrap"
                 style={{
-                  color: `rgba(255,255,255,${0.5 + zNorm * 0.5})`,
+                  color: `rgba(255,255,255,${0.55 + zNorm * 0.45})`,
                   transform: `scaleX(${scaleX})`,
-                  textShadow: zNorm > 0.3 ? '0 0 12px rgba(255,255,255,0.15)' : 'none',
+                  textShadow: zNorm > 0.2 ? '0 0 20px rgba(255,255,255,0.1)' : 'none',
                 }}
               >
                 {tag}
