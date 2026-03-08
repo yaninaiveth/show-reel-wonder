@@ -10,26 +10,20 @@ const fadeIn = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
 export default function HeroPanel() {
   return (
     <section className="absolute inset-0 max-md:relative max-md:inset-auto flex flex-col justify-end px-[6vw] pb-12 bg-ink overflow-hidden max-md:min-h-screen">
-      {/* Three.js Scene */}
-      <Suspense fallback={null}>
-        <CircusScene />
-      </Suspense>
-
-      {/* Portrait */}
-      <motion.div
-        className="absolute top-[15vh] right-[clamp(5rem,18vw,22vw)] w-[clamp(220px,32vw,440px)] h-[clamp(220px,32vw,440px)] rounded-full overflow-hidden border border-gold bg-gold-subtle max-sm:w-[68px] max-sm:h-[68px] max-sm:top-4 max-sm:right-12"
-        style={{ zIndex: 10 }}
-        variants={fadeRight}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
+      {/* Background image */}
+      <div className="absolute inset-0" style={{ zIndex: 0 }}>
         <img
           src={joseImg}
           alt="Jose Maria Donnici"
-          className="w-full h-full object-cover brightness-[0.85] saturate-[0.75] hover:brightness-100 hover:saturate-100 transition-[filter] duration-400"
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.3) saturate(0.6) contrast(1.1)' }}
         />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))] via-[hsl(var(--ink)/0.6)] to-transparent" />
+      </div>
+
+      {/* Three.js Particles — on top of image */}
+      <Suspense fallback={null}>
+        <CircusScene />
 
       {/* Watermark */}
       <div
