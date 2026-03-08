@@ -61,7 +61,7 @@ export default function GalleryPanel() {
   };
 
   return (
-    <section className="absolute inset-0 flex flex-col px-[6vw] pt-[3.5vh] pb-12 bg-ink2 overflow-hidden">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex flex-col px-[6vw] pt-[3.5vh] pb-12 bg-ink2 overflow-hidden max-md:py-16">
       {/* Header */}
       <div className="shrink-0 mb-[clamp(0.6rem,1.2vw,1.2rem)] flex items-end justify-between gap-6 flex-wrap">
         <div>

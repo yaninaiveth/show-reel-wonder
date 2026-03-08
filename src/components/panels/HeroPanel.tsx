@@ -9,7 +9,7 @@ const fadeIn = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
 
 export default function HeroPanel() {
   return (
-    <section className="absolute inset-0 flex flex-col justify-end px-[6vw] pb-12 bg-ink overflow-hidden">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex flex-col justify-end px-[6vw] pb-12 bg-ink overflow-hidden max-md:min-h-screen">
       {/* Three.js Scene */}
       <Suspense fallback={null}>
         <CircusScene />
