@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Mail, Phone, Instagram } from 'lucide-react';
 
 const contacts = [
@@ -17,33 +16,19 @@ export default function ContactPanel() {
       />
 
       <div className="w-full relative">
-        <motion.div
-          className="font-mono text-[0.58rem] tracking-[0.5em] uppercase text-gold mb-5 flex items-center justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <div className="font-mono text-[0.58rem] tracking-[0.5em] uppercase text-gold mb-5 flex items-center justify-center gap-4">
           <span className="w-[clamp(25px,5vw,70px)] h-px" style={{ background: 'hsl(42, 52%, 54%, 0.25)' }} />
           Get in Touch
           <span className="w-[clamp(25px,5vw,70px)] h-px" style={{ background: 'hsl(42, 52%, 54%, 0.25)' }} />
-        </motion.div>
+        </div>
 
-        <motion.h2
-          className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] mb-[clamp(1.5rem,3vw,3.5rem)] text-paper"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.8 }}
-        >
+        <h2 className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] mb-[clamp(1.5rem,3vw,3.5rem)] text-paper">
           LET'S<br />
           <span className="text-gold">CREATE</span><br />
           TOGETHER
-        </motion.h2>
+        </h2>
 
-        <motion.div
-          className="flex items-start justify-center gap-[clamp(2.5rem,7vw,8rem)] max-sm:gap-7 max-sm:flex-wrap"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
+        <div className="flex items-start justify-center gap-[clamp(2.5rem,7vw,8rem)] max-sm:gap-7 max-sm:flex-wrap">
           {contacts.map((c, i) => (
             <a
               key={i}
@@ -59,11 +44,10 @@ export default function ContactPanel() {
               <span className="font-body font-light text-[clamp(0.75rem,1vw,0.88rem)] transition-colors" style={{ color: 'hsl(42, 52%, 54%, 0.55)' }}>
                 {c.value}
               </span>
-              {/* Underline on hover */}
               <span className="absolute -bottom-1 left-1/2 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full group-hover:left-0" />
             </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

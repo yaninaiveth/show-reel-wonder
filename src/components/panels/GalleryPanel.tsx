@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useRef, useState, useCallback, useEffect } from 'react';
 
 const placeholderCards = Array.from({ length: 7 }, (_, i) => ({
@@ -37,7 +36,6 @@ export default function GalleryPanel() {
     };
   }, [syncThumb]);
 
-  // Drag to scroll
   const dragState = useRef({ isDragging: false, startX: 0, scrollLeft: 0 });
 
   const onMouseDown = (e: React.MouseEvent) => {
@@ -65,39 +63,20 @@ export default function GalleryPanel() {
       {/* Header */}
       <div className="shrink-0 mb-[clamp(0.6rem,1.2vw,1.2rem)] flex items-end justify-between gap-6 flex-wrap">
         <div>
-          <motion.div
-            className="font-mono text-[0.56rem] tracking-[0.42em] uppercase text-gold mb-1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <div className="font-mono text-[0.56rem] tracking-[0.42em] uppercase text-gold mb-1">
             Portfolio
-          </motion.div>
-          <motion.h2
-            className="font-display text-[clamp(2rem,4.5vw,4.5rem)] leading-[0.85] text-paper"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
+          </div>
+          <h2 className="font-display text-[clamp(2rem,4.5vw,4.5rem)] leading-[0.85] text-paper">
             GALLERY
-          </motion.h2>
+          </h2>
         </div>
-        <motion.p
-          className="font-mono text-[clamp(0.6rem,0.8vw,0.76rem)] tracking-wider uppercase text-dim"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <p className="font-mono text-[clamp(0.6rem,0.8vw,0.76rem)] tracking-wider uppercase text-dim">
           Swipe or drag to explore
-        </motion.p>
+        </p>
       </div>
 
       {/* Strip */}
-      <motion.div
-        className="relative flex-1 min-h-0 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
+      <div className="relative flex-1 min-h-0 overflow-hidden">
         <div
           ref={stripRef}
           className={`flex gap-[clamp(0.6rem,1vw,1rem)] overflow-x-auto overflow-y-hidden h-full pb-5 snap-x snap-mandatory ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
@@ -131,7 +110,7 @@ export default function GalleryPanel() {
           className="absolute top-0 right-0 bottom-4 w-[clamp(60px,10vw,130px)] pointer-events-none"
           style={{ background: 'linear-gradient(to right, transparent 0%, hsl(240, 14%, 6%) 100%)', zIndex: 2 }}
         />
-      </motion.div>
+      </div>
 
       {/* Custom scrollbar */}
       <div className="shrink-0 relative h-2.5 mt-2 rounded-full cursor-pointer" style={{ background: 'hsl(42, 52%, 54%, 0.12)' }}>
