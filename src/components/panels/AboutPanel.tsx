@@ -43,30 +43,31 @@ export default function AboutPanel() {
 
         {/* Photo + Orbiting Tags — right side */}
         <motion.div
-          className="relative flex-shrink-0 w-[clamp(240px,28vw,380px)] h-[clamp(340px,48vw,520px)] max-md:w-[220px] max-md:h-[320px] max-md:order-1"
+          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[380px] max-md:order-1"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          {/* Photo with edge fade to blend into background */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          {/* Photo — no harsh mask, just soft edge fade */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <img
               src={josePole}
               alt="Jose Maria performing on pole"
-              className="h-full w-auto object-contain relative z-10"
+              className="h-[110%] w-auto object-contain relative z-10"
               style={{
-                filter: 'contrast(1.1)',
-                maskImage: 'radial-gradient(ellipse 75% 85% at 50% 45%, black 50%, transparent 95%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 75% 85% at 50% 45%, black 50%, transparent 95%)',
+                filter: 'contrast(1.05) brightness(1.05)',
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%), linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+                maskComposite: 'intersect',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 88%, transparent 100%)',
               }}
             />
           </div>
 
           {/* Orbiting tags */}
           <OrbitingTags
-            radiusX={160}
-            radiusZ={80}
-            speed={20}
+            radiusX={180}
+            radiusZ={90}
+            speed={18}
           />
         </motion.div>
       </div>
