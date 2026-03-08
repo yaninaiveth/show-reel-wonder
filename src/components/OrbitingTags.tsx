@@ -70,9 +70,9 @@ export default function OrbitingTags({ radiusX = 140, radiusZ = 70, speed = 16 }
               }}
             >
               <span
-                className="text-[0.6rem] font-extralight uppercase tracking-[0.2em]"
+                className="text-[0.62rem] font-extralight uppercase tracking-[0.22em]"
                 style={{
-                  fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                  fontFamily: "'Raleway', sans-serif",
                   color: `rgba(255,255,255,${0.45 + zNorm * 0.55})`,
                 }}
               >
