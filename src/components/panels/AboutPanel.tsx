@@ -30,11 +30,8 @@ export default function AboutPanel() {
         </div>
 
         {/* Photo + Orbiting Tags — right side */}
-        <motion.div
-          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[380px] max-md:order-1 -ml-[3vw]"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+        <div
+          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[300px] max-md:order-2 -ml-[3vw] max-md:ml-0"
           style={{ perspective: '800px' }}
         >
           {/* Shadow/depth layer behind */}
