@@ -15,7 +15,7 @@ export default function HeroPanel() {
         <img
           src={joseImg}
           alt="Jose Maria Donnici"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-bottom"
           style={{ filter: 'brightness(0.3) saturate(0.6) contrast(1.1)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))] via-[hsl(var(--ink)/0.6)] to-transparent" />
