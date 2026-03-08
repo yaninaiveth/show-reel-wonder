@@ -70,10 +70,10 @@ export default function OrbitingTags({ radiusX = 140, radiusZ = 70, speed = 16 }
               }}
             >
               <span
-                className="text-[0.65rem] font-semibold uppercase tracking-[0.08em]"
+                className="text-[0.6rem] font-extralight uppercase tracking-[0.2em]"
                 style={{
-                  fontFamily: 'system-ui, -apple-system, sans-serif',
-                  color: `rgba(255,255,255,${0.5 + zNorm * 0.5})`,
+                  fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                  color: `rgba(255,255,255,${0.45 + zNorm * 0.55})`,
                 }}
               >
                 {char === ' ' ? '\u00A0' : char}
