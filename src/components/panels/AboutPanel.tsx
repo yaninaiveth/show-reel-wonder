@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
-import { lazy, Suspense } from 'react';
 import OrbitingTags from '@/components/OrbitingTags';
-
-const HandstandScene = lazy(() => import('@/components/HandstandScene'));
+import josePole from '@/assets/jose-pole-nobg.png';
 
 export default function AboutPanel() {
   return (
@@ -43,17 +41,26 @@ export default function AboutPanel() {
           </motion.p>
         </div>
 
-        {/* 3D Figure + Orbiting Tags — right side */}
+        {/* Photo + Orbiting Tags — right side */}
         <motion.div
           className="relative flex-shrink-0 w-[clamp(240px,28vw,380px)] h-[clamp(340px,48vw,520px)] max-md:w-[220px] max-md:h-[320px] max-md:order-1"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          {/* 3D Handstand silhouette */}
-          <Suspense fallback={null}>
-            <HandstandScene />
-          </Suspense>
+          {/* Photo with edge fade to blend into background */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img
+              src={josePole}
+              alt="Jose Maria performing on pole"
+              className="h-full w-auto object-contain relative z-10"
+              style={{
+                filter: 'brightness(0.7) contrast(1.15)',
+                maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+              }}
+            />
+          </div>
 
           {/* Orbiting tags */}
           <OrbitingTags
