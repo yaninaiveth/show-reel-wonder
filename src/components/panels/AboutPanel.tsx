@@ -58,8 +58,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(8px)',
-                maskImage: 'radial-gradient(ellipse 75% 80% at 50% 50%, black 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.2) 60%, transparent 80%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 75% 80% at 50% 50%, black 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.2) 60%, transparent 80%)',
+                maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
                 transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
@@ -73,8 +73,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.95) contrast(1.25) saturate(0.9)',
-                maskImage: 'radial-gradient(ellipse 70% 75% at 50% 48%, black 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 50%, transparent 70%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 70% 75% at 50% 48%, black 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 50%, transparent 70%)',
+                maskImage: 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)',
                 transform: 'translateZ(30px) scale(1.06)',
               }}
             />
