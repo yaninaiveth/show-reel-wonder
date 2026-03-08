@@ -8,10 +8,12 @@ import GalleryPanel from '@/components/panels/GalleryPanel';
 import ContactPanel from '@/components/panels/ContactPanel';
 import NavigationDots from '@/components/NavigationDots';
 import TransitionOverlay from '@/components/TransitionOverlay';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const panels = [HeroPanel, DisciplinesPanel, AboutPanel, CareerPanel, GalleryPanel, ContactPanel];
 
 export default function Index() {
+  const isMobile = useIsMobile();
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const wheelAcc = useRef(0);
@@ -20,28 +22,20 @@ export default function Index() {
     (next: number) => {
       if (isAnimating || next === current || next < 0 || next >= panels.length) return;
       setIsAnimating(true);
-
-      // Show overlay strips
-      setTimeout(() => {
-        setCurrent(next);
-      }, 800);
-
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 2000);
+      setTimeout(() => { setCurrent(next); }, 800);
+      setTimeout(() => { setIsAnimating(false); }, 2000);
     },
     [current, isAnimating]
   );
 
-  // Wheel navigation
+  // Wheel navigation — desktop only
   useEffect(() => {
+    if (isMobile) return;
     const handler = (e: WheelEvent) => {
-      // Don't hijack scroll on gallery panel
       if (current === 4) {
         const strip = document.querySelector('[data-gallery-strip]');
         if (strip && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       }
-
       e.preventDefault();
       wheelAcc.current += e.deltaY;
       if (Math.abs(wheelAcc.current) > 50) {
@@ -51,34 +45,39 @@ export default function Index() {
     };
     window.addEventListener('wheel', handler, { passive: false });
     return () => window.removeEventListener('wheel', handler);
-  }, [current, goTo]);
+  }, [current, goTo, isMobile]);
 
-  // Touch navigation
+  // Keyboard navigation — desktop only
   useEffect(() => {
-    let startY = 0;
-    const onStart = (e: TouchEvent) => { startY = e.touches[0].clientY; };
-    const onEnd = (e: TouchEvent) => {
-      const dy = startY - e.changedTouches[0].clientY;
-      if (Math.abs(dy) > 40) goTo(current + (dy > 0 ? 1 : -1));
-    };
-    window.addEventListener('touchstart', onStart, { passive: true });
-    window.addEventListener('touchend', onEnd, { passive: true });
-    return () => {
-      window.removeEventListener('touchstart', onStart);
-      window.removeEventListener('touchend', onEnd);
-    };
-  }, [current, goTo]);
-
-  // Keyboard navigation
-  useEffect(() => {
+    if (isMobile) return;
     const handler = (e: KeyboardEvent) => {
       if (['ArrowDown', 'ArrowRight', 'PageDown'].includes(e.key)) goTo(current + 1);
       if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) goTo(current - 1);
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [current, goTo]);
+  }, [current, goTo, isMobile]);
 
+  // Mobile: scrollable landing page
+  if (isMobile) {
+    return (
+      <div className="w-full min-h-screen bg-ink">
+        {panels.map((Panel, i) => (
+          <div key={i} className="relative w-full min-h-screen">
+            <Panel />
+          </div>
+        ))}
+        <footer className="py-6 px-[6vw] flex items-center justify-between">
+          <span className="font-display text-[1.2rem] tracking-[0.18em] text-gold">JMD</span>
+          <span className="font-mono text-[0.48rem] tracking-[0.26em] uppercase text-dim">
+            San Juan · Argentina
+          </span>
+        </footer>
+      </div>
+    );
+  }
+
+  // Desktop: panel-by-panel navigation
   const CurrentPanel = panels[current];
 
   return (
@@ -99,10 +98,9 @@ export default function Index() {
       <TransitionOverlay isAnimating={isAnimating} />
       <NavigationDots total={panels.length} current={current} onNavigate={goTo} />
 
-      {/* Footer */}
       <footer className="fixed bottom-4 left-[6vw] right-10 flex items-center justify-between pointer-events-none" style={{ zIndex: 800 }}>
         <span className="font-display text-[1.2rem] tracking-[0.18em] text-gold">JMD</span>
-        <span className="font-mono text-[0.48rem] tracking-[0.26em] uppercase text-dim max-sm:hidden">
+        <span className="font-mono text-[0.48rem] tracking-[0.26em] uppercase text-dim">
           San Juan · Argentina
         </span>
       </footer>
