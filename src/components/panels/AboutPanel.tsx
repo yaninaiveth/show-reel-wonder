@@ -65,8 +65,8 @@ export default function AboutPanel() {
           {/* Orbiting tags — centered on the figure */}
           <div className="absolute inset-0" style={{ zIndex: 20 }}>
             <OrbitingTags
-              radiusX={110}
-              radiusZ={55}
+              radiusX={135}
+              radiusZ={65}
               speed={16}
             />
           </div>
