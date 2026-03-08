@@ -20,17 +20,20 @@ export default function CareerPanel() {
           </h2>
         </div>
 
-        <div className="flex flex-col max-w-[680px]">
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-px">
           {items.map((item, i) => (
             <div
               key={i}
-              className="py-[clamp(0.8rem,1.4vw,1.2rem)] border-b border-[hsl(var(--gold)/0.12)] first:border-t"
+              className="flex items-start p-[clamp(0.9rem,1.6vw,1.4rem)] bg-card-subtle border-l-2 border-transparent"
             >
-              <div className="font-display text-[clamp(1.1rem,2vw,1.5rem)] tracking-wide text-paper leading-none mb-1">
-                {item.name}
-              </div>
-              <div className="font-serif italic font-light text-[clamp(0.78rem,1vw,0.92rem)] text-dim leading-relaxed">
-                {item.desc}
+              <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 mr-3 shrink-0" />
+              <div>
+                <div className="font-display text-[clamp(1rem,1.9vw,1.45rem)] tracking-wide text-paper leading-none mb-1">
+                  {item.name}
+                </div>
+                <div className="font-body font-light text-[clamp(0.7rem,0.9vw,0.84rem)] text-dim leading-relaxed">
+                  {item.desc}
+                </div>
               </div>
             </div>
           ))}
