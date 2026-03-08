@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const tags = ['Age 29', '1.77m · 85kg', 'Argentine', 'Spanish · English'];
+const tags = ['AGE 29', '1.77m · 85kg', 'ARGENTINE', 'ES · EN'];
 
 interface OrbitingTagsProps {
   radiusX?: number;
@@ -8,7 +8,7 @@ interface OrbitingTagsProps {
   speed?: number;
 }
 
-export default function OrbitingTags({ radiusX = 180, radiusZ = 90, speed = 18 }: OrbitingTagsProps) {
+export default function OrbitingTags({ radiusX = 180, radiusZ = 90, speed = 16 }: OrbitingTagsProps) {
   const [angle, setAngle] = useState(0);
   const rafRef = useRef<number>(0);
   const prevTime = useRef<number>(0);
@@ -41,20 +41,16 @@ export default function OrbitingTags({ radiusX = 180, radiusZ = 90, speed = 18 }
 
           const x = Math.sin(rad) * radiusX;
           const z = Math.cos(rad) * radiusZ;
-
           const zNorm = Math.cos(rad);
 
-          // Opacity: fully visible in front half, fade out behind
-          const opacity = zNorm > -0.1 ? Math.min(1, (zNorm + 0.1) * 1.8) : 0;
-
-          // Scale for depth
+          // Hide behind figure
+          const opacity = zNorm > -0.1 ? Math.min(1, (zNorm + 0.1) * 1.6) : 0;
           const scale = 0.85 + zNorm * 0.15;
 
-          // ScaleX compression at sides — letters bunch up
+          // Compress horizontally at sides
           const sinAbs = Math.abs(Math.sin(rad));
-          const scaleX = 1 - sinAbs * 0.5;
+          const scaleX = 1 - sinAbs * 0.55;
 
-          // Bend rotation
           const bendAngle = -Math.sin(rad) * 45;
 
           return (
@@ -71,11 +67,11 @@ export default function OrbitingTags({ radiusX = 180, radiusZ = 90, speed = 18 }
               }}
             >
               <span
-                className="font-display text-[1rem] uppercase font-black tracking-[0.2em] whitespace-nowrap"
+                className="text-[1.1rem] font-black tracking-[0.25em] whitespace-nowrap"
                 style={{
-                  color: `rgba(255,255,255,${0.55 + zNorm * 0.45})`,
+                  fontFamily: 'system-ui, -apple-system, sans-serif',
+                  color: `rgba(255,255,255,${0.6 + zNorm * 0.4})`,
                   transform: `scaleX(${scaleX})`,
-                  textShadow: zNorm > 0.2 ? '0 0 20px rgba(255,255,255,0.1)' : 'none',
                 }}
               >
                 {tag}
