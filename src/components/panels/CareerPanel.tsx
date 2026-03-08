@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 const items = [
   { name: 'Fiesta Nacional del Sol', desc: "Grand Finale — aerial harness acrobatics at Argentina's most iconic sun festival" },
   { name: 'Abnegación — Lead Role', desc: 'Selected by the Instituto Nacional del Teatro for the lead acting role' },
@@ -14,21 +12,12 @@ export default function CareerPanel() {
     <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center px-[6vw] bg-ink max-md:py-16 max-md:-mt-24">
       <div className="w-full">
         <div className="mb-[clamp(1.2rem,2.5vw,3rem)]">
-          <motion.div
-            className="font-mono text-[0.58rem] tracking-[0.42em] uppercase text-gold mb-1.5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <div className="font-mono text-[0.58rem] tracking-[0.42em] uppercase text-gold mb-1.5">
             Track Record
-          </motion.div>
-          <motion.h2
-            className="font-display text-[clamp(2.5rem,6vw,6rem)] leading-[0.85] text-paper"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-          >
+          </div>
+          <h2 className="font-display text-[clamp(2.5rem,6vw,6rem)] leading-[0.85] text-paper">
             CAREER <em className="text-gold not-italic">Highlights</em>
-          </motion.h2>
+          </h2>
         </div>
 
         <div className="flex flex-col max-w-[680px]">
