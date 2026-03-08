@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import OrbitingTags from '@/components/OrbitingTags';
-import josePole from '@/assets/jose-pole-nobg.png';
+import josePole from '@/assets/jose-pole-dark.jpg';
 
 export default function AboutPanel() {
   return (
