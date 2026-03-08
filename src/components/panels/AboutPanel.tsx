@@ -55,9 +55,9 @@ export default function AboutPanel() {
               alt="Jose Maria performing on pole"
               className="h-full w-auto object-contain relative z-10"
               style={{
-                filter: 'brightness(0.7) contrast(1.15)',
-                maskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 70% 80% at 50% 50%, black 40%, transparent 100%)',
+                filter: 'contrast(1.1)',
+                maskImage: 'radial-gradient(ellipse 75% 85% at 50% 45%, black 50%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 75% 85% at 50% 45%, black 50%, transparent 95%)',
               }}
             />
           </div>
