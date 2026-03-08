@@ -58,8 +58,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(6px)',
-                maskImage: 'radial-gradient(ellipse 48% 52% at 50% 50%, black 10%, transparent 60%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 48% 52% at 50% 50%, black 10%, transparent 60%)',
+                maskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 5%, transparent 50%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 5%, transparent 50%)',
                 transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
@@ -73,8 +73,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.95) contrast(1.3) saturate(0.9)',
-                maskImage: 'radial-gradient(ellipse 42% 47% at 50% 48%, black 25%, transparent 65%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 42% 47% at 50% 48%, black 25%, transparent 65%)',
+                maskImage: 'radial-gradient(ellipse 44% 50% at 50% 48%, black 15%, transparent 55%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 44% 50% at 50% 48%, black 15%, transparent 55%)',
                 transform: 'translateZ(30px) scale(1.06)',
               }}
             />
