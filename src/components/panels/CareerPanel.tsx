@@ -31,25 +31,19 @@ export default function CareerPanel() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-px">
+        <div className="flex flex-col max-w-[680px]">
           {items.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              className="flex items-start p-[clamp(0.9rem,1.6vw,1.4rem)] bg-card-subtle border-l-2 border-transparent hover:border-l-gold hover:bg-gold-subtle transition-all duration-300 group"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
+              className="py-[clamp(0.8rem,1.4vw,1.2rem)] border-b border-[hsl(var(--gold)/0.12)] first:border-t"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 mr-3 shrink-0 group-hover:scale-150 transition-transform" />
-              <div>
-                <div className="font-display text-[clamp(1rem,1.9vw,1.45rem)] tracking-wide text-paper leading-none mb-1">
-                  {item.name}
-                </div>
-                <div className="font-body font-light text-[clamp(0.7rem,0.9vw,0.84rem)] text-dim leading-relaxed">
-                  {item.desc}
-                </div>
+              <div className="font-display text-[clamp(1.1rem,2vw,1.5rem)] tracking-wide text-paper leading-none mb-1">
+                {item.name}
               </div>
-            </motion.div>
+              <div className="font-serif italic font-light text-[clamp(0.78rem,1vw,0.92rem)] text-dim leading-relaxed">
+                {item.desc}
+              </div>
+            </div>
           ))}
         </div>
       </div>
