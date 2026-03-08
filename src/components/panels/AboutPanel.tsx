@@ -47,27 +47,69 @@ export default function AboutPanel() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
+          style={{ perspective: '900px' }}
         >
-          {/* Photo with heavy vignette to blend into dark bg */}
-          <div className="absolute inset-[-20%] flex items-center justify-center overflow-hidden">
+          {/* Background layer — darker, blurred, slightly behind */}
+          <div className="absolute inset-[-25%] flex items-center justify-center overflow-hidden" style={{ zIndex: 1 }}>
             <img
               src={josePole}
-              alt="Jose Maria performing on pole"
-              className="h-full w-full object-cover relative z-10"
+              alt=""
+              aria-hidden
+              className="h-full w-full object-cover"
               style={{
-                filter: 'brightness(0.85) contrast(1.2) saturate(0.8)',
-                maskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 20%, transparent 70%)',
+                filter: 'brightness(0.4) contrast(1.1) saturate(0.5) blur(8px)',
+                maskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 15%, transparent 65%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 15%, transparent 65%)',
+                transform: 'scale(1.05)',
               }}
             />
           </div>
 
-          {/* Orbiting tags */}
-          <OrbitingTags
-            radiusX={180}
-            radiusZ={90}
-            speed={18}
+          {/* Main figure — "popping out" with 3D transform */}
+          <motion.div
+            className="absolute inset-[-15%] flex items-center justify-center overflow-visible"
+            style={{ zIndex: 10 }}
+            animate={{
+              rotateY: [0, 1.5, 0, -1.5, 0],
+              rotateX: [0, -0.5, 0, 0.5, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            <img
+              src={josePole}
+              alt="Jose Maria performing on pole"
+              className="h-full w-full object-cover"
+              style={{
+                filter: 'brightness(0.95) contrast(1.25) saturate(0.9)',
+                maskImage: 'radial-gradient(ellipse 42% 48% at 50% 48%, black 30%, transparent 68%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 42% 48% at 50% 48%, black 30%, transparent 68%)',
+                transform: 'translateZ(40px) scale(1.08)',
+                transformStyle: 'preserve-3d',
+              }}
+            />
+          </motion.div>
+
+          {/* Subtle glow behind the figure */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              zIndex: 2,
+              background: 'radial-gradient(ellipse 40% 50% at 50% 50%, rgba(100,140,200,0.06) 0%, transparent 70%)',
+            }}
           />
+
+          {/* Orbiting tags */}
+          <div style={{ zIndex: 20, position: 'relative' }} className="absolute inset-0">
+            <OrbitingTags
+              radiusX={190}
+              radiusZ={95}
+              speed={16}
+            />
+          </div>
         </motion.div>
       </div>
     </section>
