@@ -60,7 +60,7 @@ export default function OrbitingTags({ radiusX = 140, radiusZ = 70, speed = 16 }
           elements.push(
             <div
               key={`${ti}-${li}-${ci}`}
-              className="absolute left-1/2 top-[55%]"
+              className="absolute left-[55%] top-[55%]"
               style={{
                 transform: `translate(-50%, -50%) translate3d(${x}px, ${yOffset}px, ${z}px) rotateY(${facingAngle}deg)`,
                 opacity,
