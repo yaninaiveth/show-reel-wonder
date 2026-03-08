@@ -36,42 +36,18 @@ export default function HeroPanel() {
 
       {/* Text content */}
       <div className="relative" style={{ zIndex: 20 }}>
-        <motion.div
-          className="font-mono text-[clamp(0.48rem,0.6rem,0.7rem)] tracking-[0.42em] uppercase text-gold mb-[clamp(0.8rem,1.6rem,2rem)]"
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6, delay: 0 }}
-        >
+        <div className="font-mono text-[clamp(0.48rem,0.6rem,0.7rem)] tracking-[0.42em] uppercase text-gold mb-[clamp(0.8rem,1.6rem,2rem)]">
           Circus &amp; Aerial Artist
-        </motion.div>
-        <motion.span
-          className="font-serif font-light italic text-[clamp(2rem,7vw,9rem)] text-gold2 leading-none block"
-          variants={fadeRight}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+        </div>
+        <span className="font-serif font-light italic text-[clamp(2rem,7vw,9rem)] text-gold2 leading-none block">
           José María
-        </motion.span>
-        <motion.span
-          className="font-display text-[clamp(3.5rem,14vw,19rem)] leading-[0.82] block text-paper"
-          variants={fadeRight}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.7, delay: 0.35 }}
-        >
+        </span>
+        <span className="font-display text-[clamp(3.5rem,14vw,19rem)] leading-[0.82] block text-paper">
           DONNICI
-        </motion.span>
-        <motion.span
-          className="font-display text-[clamp(3.5rem,14vw,19rem)] leading-[0.82] text-gold block"
-          variants={fadeRight}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.7, delay: 0.5 }}
-        >
+        </span>
+        <span className="font-display text-[clamp(3.5rem,14vw,19rem)] leading-[0.82] text-gold block">
           NEFA
-        </motion.span>
+        </span>
       </div>
     </section>
   );
