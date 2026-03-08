@@ -57,9 +57,9 @@ export default function AboutPanel() {
               aria-hidden
               className="h-full w-full object-cover"
               style={{
-                filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(6px)',
-                maskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 5%, transparent 50%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 50% 55% at 50% 50%, black 5%, transparent 50%)',
+                filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(8px)',
+                maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
                 transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
