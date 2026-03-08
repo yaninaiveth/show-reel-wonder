@@ -21,7 +21,7 @@ const cardVariants = {
 
 export default function DisciplinesPanel() {
   return (
-    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex flex-col justify-center px-[6vw] py-[clamp(2.5rem,5vh,5rem)] bg-ink overflow-hidden max-md:py-16">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex flex-col justify-center px-[6vw] py-[clamp(2.5rem,5vh,5rem)] bg-ink overflow-hidden max-md:py-24">
       {/* Background watermark */}
       <div
         className="absolute right-[-2vw] bottom-[-4rem] font-display text-[21vw] leading-none pointer-events-none"
