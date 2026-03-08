@@ -42,25 +42,20 @@ export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }
           const x = Math.sin(rad) * radiusX;
           const z = Math.cos(rad) * radiusZ;
 
-          const zNorm = Math.cos(rad); // -1 to 1
+          const zNorm = Math.cos(rad);
 
           // Opacity: visible in front, fade behind the figure
           const opacity = zNorm > -0.15 ? Math.min(1, (zNorm + 0.15) * 1.5) : 0;
 
           // Scale for depth
-          const scale = 0.75 + zNorm * 0.25;
+          const scale = 0.8 + zNorm * 0.2;
 
-          // Letter-spacing compression at the sides: 
-          // At front/back (sin≈0) → normal spacing
-          // At sides (|sin|≈1) → compressed/bunched letters
+          // At the sides (|sinRad| near 1), compress scaleX to bunch letters
           const sinAbs = Math.abs(Math.sin(rad));
-          const letterSpacing = 0.18 - sinAbs * 0.22; // from 0.18em to -0.04em
+          const scaleX = 1 - sinAbs * 0.6; // strong compression at edges
 
-          // Bend rotation — tags tilt as they orbit
-          const bendAngle = -Math.sin(rad) * 55;
-
-          // ScaleX compression at sides to enhance the "ribbon" feel
-          const scaleX = 1 - sinAbs * 0.35;
+          // Bend rotation
+          const bendAngle = -Math.sin(rad) * 50;
 
           return (
             <div
@@ -76,10 +71,11 @@ export default function OrbitingTags({ radiusX = 150, radiusZ = 70, speed = 18 }
               }}
             >
               <span
-                className="font-mono text-[0.7rem] uppercase font-bold text-paper whitespace-nowrap"
+                className="font-display text-[0.85rem] uppercase font-extrabold tracking-[0.15em] whitespace-nowrap"
                 style={{
-                  letterSpacing: `${letterSpacing}em`,
+                  color: `rgba(255,255,255,${0.5 + zNorm * 0.5})`,
                   transform: `scaleX(${scaleX})`,
+                  textShadow: zNorm > 0.3 ? '0 0 12px rgba(255,255,255,0.15)' : 'none',
                 }}
               >
                 {tag}
