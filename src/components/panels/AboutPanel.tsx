@@ -82,7 +82,7 @@ export default function AboutPanel() {
               speed={16}
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
