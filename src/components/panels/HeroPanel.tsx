@@ -24,6 +24,7 @@ export default function HeroPanel() {
       {/* Three.js Particles — on top of image */}
       <Suspense fallback={null}>
         <CircusScene />
+      </Suspense>
 
       {/* Watermark */}
       <div
