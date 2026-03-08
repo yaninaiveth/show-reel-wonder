@@ -61,7 +61,7 @@ export default function Index() {
   // Mobile: scrollable landing page
   if (isMobile) {
     return (
-      <div className="w-full min-h-screen bg-ink">
+      <div className="w-full min-h-screen bg-ink overflow-y-auto">
         {panels.map((Panel, i) => (
           <div key={i} className="relative w-full min-h-screen">
             <Panel />
