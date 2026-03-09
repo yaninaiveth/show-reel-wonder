@@ -108,13 +108,13 @@ export default function Index() {
       <TransitionOverlay isAnimating={isAnimating} />
 
       {/* Animated letters overlay on top of transition when going to Contact */}
-      <AnimatePresence>
-        {isAnimating && targetPanel === 5 && (
+       <AnimatePresence>
+        {targetPanel === 5 && (
           <motion.div
             className="fixed inset-0 flex items-center justify-center text-center pointer-events-none pb-[10vh]"
             style={{ zIndex: 9500 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
             <h2 className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] text-paper">
               {["LET'S", "CREATE", "TOGETHER"].map((word, wi) => (
