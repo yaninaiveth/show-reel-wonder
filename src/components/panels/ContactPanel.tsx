@@ -1,5 +1,4 @@
 import { Mail, Phone, Instagram } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const contacts = [
   { icon: Phone, label: 'WhatsApp', value: '+549 264 445 2424', href: 'https://wa.me/5492644452424' },
