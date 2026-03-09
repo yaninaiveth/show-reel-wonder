@@ -18,14 +18,16 @@ export default function Index() {
   const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [targetPanel, setTargetPanel] = useState<number | null>(null);
   const wheelAcc = useRef(0);
 
   const goTo = useCallback(
     (next: number) => {
       if (isAnimating || next === current || next < 0 || next >= panels.length) return;
       setIsAnimating(true);
+      setTargetPanel(next);
       setTimeout(() => { setCurrent(next); }, 800);
-      setTimeout(() => { setIsAnimating(false); }, 2000);
+      setTimeout(() => { setIsAnimating(false); setTargetPanel(null); }, 2000);
     },
     [current, isAnimating]
   );
