@@ -173,18 +173,16 @@ export default function GalleryPanel() {
             <div
               key={i}
               onClick={() => openLightbox(i)}
-              className={`relative shrink-0 overflow-hidden border border-gold/20 hover:border-gold/50 transition-all duration-300 cursor-pointer group ${
+              className={`relative shrink-0 overflow-hidden border border-gold/20 transition-all duration-300 cursor-pointer ${
                 item.aspect === 'landscape' ? 'w-[clamp(22rem,38vw,36rem)]' : 'w-[clamp(14rem,22vw,20rem)]'
               } h-full`}
             >
               <img
                 src={item.src}
                 alt={item.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover"
                 draggable={false}
               />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-all duration-300" />
             </div>
           ))}
         </div>
