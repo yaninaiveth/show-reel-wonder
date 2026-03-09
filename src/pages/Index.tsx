@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SplashLoader from '@/components/SplashLoader';
 import HeroPanel from '@/components/panels/HeroPanel';
 import DisciplinesPanel from '@/components/panels/DisciplinesPanel';
 import AboutPanel from '@/components/panels/AboutPanel';
