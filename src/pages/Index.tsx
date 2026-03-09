@@ -124,9 +124,9 @@ export default function Index() {
                       <motion.span
                         key={`${wi}-${ci}`}
                         className="inline-block"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 + totalDelay * 0.09, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 + totalDelay * 0.09, duration: 0.5, ease: 'easeOut' }}
                       >
                         {char}
                       </motion.span>
