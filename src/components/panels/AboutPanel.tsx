@@ -1,8 +1,18 @@
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 import OrbitingTags from '@/components/OrbitingTags';
 import josePole from '@/assets/jose-pole.jpg';
 
 export default function AboutPanel() {
+  const isMobile = useIsMobile();
+
+  const mainMask = isMobile
+    ? 'none'
+    : 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)';
+  const shadowMask = isMobile
+    ? 'none'
+    : 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)';
+
   return (
     <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden max-md:py-3 max-md:mt-6">
       <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-8">
@@ -43,8 +53,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(8px)',
-                maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
+                maskImage: shadowMask,
+                WebkitMaskImage: shadowMask,
                 transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
@@ -58,8 +68,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.95) contrast(1.25) saturate(0.9)',
-                maskImage: 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)',
+                maskImage: mainMask,
+                WebkitMaskImage: mainMask,
                 transform: 'translateZ(30px) scale(1.06)',
               }}
             />
