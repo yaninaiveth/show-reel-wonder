@@ -93,7 +93,7 @@ function Lightbox({
       </AnimatePresence>
 
       {/* Counter */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] tracking-[0.3em] uppercase text-dim">
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] tracking-[0.3em] uppercase text-dim">
         {index + 1} / {items.length}
       </div>
     </motion.div>
