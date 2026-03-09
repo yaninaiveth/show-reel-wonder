@@ -111,7 +111,7 @@ export default function Index() {
        <AnimatePresence>
         {targetPanel === 5 && (
           <motion.div
-            className="fixed inset-0 flex items-center justify-center text-center pointer-events-none pb-[10vh]"
+            className="fixed inset-0 flex items-center justify-center text-center pointer-events-none pb-[14vh]"
             style={{ zIndex: 9500 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
