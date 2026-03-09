@@ -14,7 +14,7 @@ export default function AboutPanel() {
     : 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)';
 
   return (
-    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden max-md:py-0 max-md:mt-6">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden max-md:py-0 max-md:mt-6 max-md:min-h-[90vh]">
       <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-2">
         {/* Text content — left side */}
         <div className="flex-1 min-w-0 max-md:order-1">
