@@ -108,12 +108,14 @@ export default function GalleryPanel() {
   const startX = useRef(0);
   const scrollStart = useRef(0);
   const hasMoved = useRef(false);
+  const pointerTarget = useRef<HTMLElement | null>(null);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     isDragging.current = true;
     hasMoved.current = false;
     startX.current = e.clientX;
     scrollStart.current = stripRef.current?.scrollLeft ?? 0;
+    pointerTarget.current = e.target as HTMLElement;
     stripRef.current?.setPointerCapture(e.pointerId);
     if (stripRef.current) stripRef.current.style.cursor = 'grabbing';
   }, []);
@@ -131,14 +133,14 @@ export default function GalleryPanel() {
     stripRef.current?.releasePointerCapture(e.pointerId);
     if (stripRef.current) stripRef.current.style.cursor = 'grab';
     
-    if (!wasDragging) {
-      const target = e.target as HTMLElement;
-      const card = target.closest('[data-gallery-index]');
+    if (!wasDragging && pointerTarget.current) {
+      const card = pointerTarget.current.closest('[data-gallery-index]');
       if (card) {
         const index = Number(card.getAttribute('data-gallery-index'));
         setLightboxIndex(index);
       }
     }
+    pointerTarget.current = null;
   }, []);
 
   const closeLightbox = () => setLightboxIndex(null);
