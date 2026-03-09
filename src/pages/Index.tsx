@@ -104,6 +104,41 @@ export default function Index() {
       </AnimatePresence>
 
       <TransitionOverlay isAnimating={isAnimating} />
+
+      {/* Animated letters overlay on top of transition when going to Contact */}
+      <AnimatePresence>
+        {isAnimating && targetPanel === 5 && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center text-center pointer-events-none"
+            style={{ zIndex: 9500 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <h2 className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] text-paper">
+              {["LET'S", "CREATE", "TOGETHER"].map((word, wi) => (
+                <span key={wi} className={wi === 1 ? 'text-gold' : ''}>
+                  {word.split('').map((char, ci) => {
+                    const totalDelay = wi === 0 ? ci : wi === 1 ? 5 + ci : 5 + 6 + ci;
+                    return (
+                      <motion.span
+                        key={`${wi}-${ci}`}
+                        className="inline-block"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + totalDelay * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        {char}
+                      </motion.span>
+                    );
+                  })}
+                  {wi < 2 && <br />}
+                </span>
+              ))}
+            </h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <NavigationDots total={panels.length} current={current} onNavigate={goTo} />
 
       <footer className="fixed bottom-4 left-[6vw] right-10 flex items-center justify-between pointer-events-none" style={{ zIndex: 800 }}>
