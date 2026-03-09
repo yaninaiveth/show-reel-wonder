@@ -41,7 +41,7 @@ export default function AboutPanel() {
 
         {/* Photo + Orbiting Tags — right side */}
         <div
-          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[260px] max-md:h-[350px] max-md:order-2 -ml-[3vw] max-md:ml-0 max-md:-mb-20"
+          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[280px] max-md:h-[420px] max-md:order-2 -ml-[3vw] max-md:ml-0 max-md:-mb-20 max-md:overflow-visible"
           style={{ perspective: '800px' }}
         >
           {/* Shadow/depth layer behind */}
