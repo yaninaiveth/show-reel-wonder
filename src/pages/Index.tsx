@@ -26,8 +26,9 @@ export default function Index() {
       if (isAnimating || next === current || next < 0 || next >= panels.length) return;
       setIsAnimating(true);
       setTargetPanel(next);
-      setTimeout(() => { setCurrent(next); }, 800);
-      setTimeout(() => { setIsAnimating(false); setTargetPanel(null); }, 2000);
+      const isContact = next === 5;
+      setTimeout(() => { setCurrent(next); }, isContact ? 3200 : 800);
+      setTimeout(() => { setIsAnimating(false); setTargetPanel(null); }, isContact ? 4000 : 2000);
     },
     [current, isAnimating]
   );
@@ -125,7 +126,7 @@ export default function Index() {
                         className="inline-block"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 + totalDelay * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ delay: 0.5 + totalDelay * 0.09, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                       >
                         {char}
                       </motion.span>
