@@ -60,6 +60,10 @@ export default function Index() {
     return () => window.removeEventListener('keydown', handler);
   }, [current, goTo, isMobile]);
 
+  if (loading) {
+    return <SplashLoader onComplete={() => setLoading(false)} />;
+  }
+
   // Mobile: scrollable landing page
   if (isMobile) {
     return (
