@@ -14,7 +14,7 @@ export default function AboutPanel() {
     : 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)';
 
   return (
-    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 max-md:overflow-visible overflow-hidden max-md:py-3 max-md:mt-6">
+    <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden max-md:py-8 max-md:mt-6">
       <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-8">
         {/* Text content — left side */}
         <div className="flex-1 min-w-0 max-md:order-1">
@@ -41,7 +41,7 @@ export default function AboutPanel() {
 
         {/* Photo + Orbiting Tags — right side */}
         <div
-          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[280px] max-md:h-[420px] max-md:order-2 -ml-[3vw] max-md:ml-0 max-md:-mb-20 max-md:overflow-visible"
+          className="relative flex-shrink-0 w-[clamp(280px,32vw,440px)] h-[clamp(400px,55vw,600px)] max-md:w-[280px] max-md:h-[420px] max-md:order-2 -ml-[3vw] max-md:ml-0"
           style={{ perspective: '800px' }}
         >
           {/* Shadow/depth layer behind */}
