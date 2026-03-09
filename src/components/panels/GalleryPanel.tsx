@@ -121,20 +121,25 @@ export default function GalleryPanel() {
   const onPointerMove = useCallback((e: React.PointerEvent) => {
     if (!isDragging.current || !stripRef.current) return;
     const dx = e.clientX - startX.current;
-    if (Math.abs(dx) > 4) hasMoved.current = true;
+    if (Math.abs(dx) > 10) hasMoved.current = true;
     stripRef.current.scrollLeft = scrollStart.current - dx;
   }, []);
 
   const onPointerUp = useCallback((e: React.PointerEvent) => {
+    const wasDragging = hasMoved.current;
     isDragging.current = false;
     stripRef.current?.releasePointerCapture(e.pointerId);
     if (stripRef.current) stripRef.current.style.cursor = 'grab';
+    
+    if (!wasDragging) {
+      const target = e.target as HTMLElement;
+      const card = target.closest('[data-gallery-index]');
+      if (card) {
+        const index = Number(card.getAttribute('data-gallery-index'));
+        setLightboxIndex(index);
+      }
+    }
   }, []);
-
-  const openLightbox = (i: number) => {
-    if (hasMoved.current) return;
-    setLightboxIndex(i);
-  };
 
   const closeLightbox = () => setLightboxIndex(null);
   const prevLightbox = () => setLightboxIndex((i) => (i !== null ? (i - 1 + items.length) % items.length : null));
@@ -172,7 +177,7 @@ export default function GalleryPanel() {
           {items.map((item, i) => (
             <div
               key={i}
-              onClick={() => openLightbox(i)}
+              data-gallery-index={i}
               className={`relative shrink-0 overflow-hidden border border-gold/20 transition-all duration-300 cursor-pointer ${
                 item.aspect === 'landscape' ? 'w-[clamp(22rem,38vw,36rem)]' : 'w-[clamp(14rem,22vw,20rem)]'
               } h-full`}
