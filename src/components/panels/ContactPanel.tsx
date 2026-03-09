@@ -41,7 +41,7 @@ export default function ContactPanel() {
               <span className="font-mono text-[0.42rem] tracking-[0.28em] uppercase text-dim group-hover:text-gold2 transition-colors">
                 {c.label}
               </span>
-              <span className="font-body font-light text-[clamp(0.82rem,1.1vw,0.95rem)] text-gold2 opacity-80 group-hover:opacity-100 transition-all">
+              <span className="font-body font-normal tracking-wide text-[clamp(0.85rem,1.15vw,1rem)] text-gold2 opacity-85 group-hover:opacity-100 transition-all">
                 {c.value}
               </span>
               <span className="absolute -bottom-1 left-1/2 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full group-hover:left-0" />
