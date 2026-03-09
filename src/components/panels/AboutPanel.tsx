@@ -15,7 +15,7 @@ export default function AboutPanel() {
 
   return (
     <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] bg-ink2 overflow-hidden max-md:py-2 max-md:mt-6">
-      <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-4">
+      <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-2">
         {/* Text content — left side */}
         <div className="flex-1 min-w-0 max-md:order-1">
           <div className="font-mono text-[0.58rem] tracking-[0.42em] uppercase text-gold mb-4">
