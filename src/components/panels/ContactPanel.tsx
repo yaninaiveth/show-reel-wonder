@@ -23,25 +23,9 @@ export default function ContactPanel() {
         </div>
 
         <h2 className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] mb-[clamp(1.5rem,3vw,3.5rem)] text-paper">
-          {["LET'S", "CREATE", "TOGETHER"].map((word, wi) => (
-            <span key={wi} className={wi === 1 ? 'text-gold' : ''}>
-              {word.split('').map((char, ci) => {
-                const totalDelay = wi === 0 ? ci : wi === 1 ? 5 + ci : 5 + 6 + ci;
-                return (
-                  <motion.span
-                    key={`${wi}-${ci}`}
-                    className="inline-block"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: totalDelay * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {char}
-                  </motion.span>
-                );
-              })}
-              {wi < 2 && <br />}
-            </span>
-          ))}
+          LET'S<br />
+          <span className="text-gold">CREATE</span><br />
+          TOGETHER
         </h2>
 
         <div className="flex items-start justify-center gap-[clamp(2.5rem,7vw,8rem)] max-sm:gap-7 max-sm:flex-wrap">
