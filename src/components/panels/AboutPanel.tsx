@@ -7,10 +7,10 @@ export default function AboutPanel() {
   const isMobile = useIsMobile();
 
   const mainMask = isMobile
-    ? 'radial-gradient(ellipse 80% 85% at 50% 48%, black 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, transparent 90%)'
+    ? 'radial-gradient(ellipse 70% 75% at 50% 48%, black 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.2) 60%, transparent 80%)'
     : 'radial-gradient(ellipse 60% 65% at 50% 48%, black 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.3) 45%, transparent 65%)';
   const shadowMask = isMobile
-    ? 'radial-gradient(ellipse 80% 85% at 50% 50%, black 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.2) 70%, transparent 90%)'
+    ? 'radial-gradient(ellipse 70% 75% at 50% 50%, black 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.15) 60%, transparent 80%)'
     : 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)';
 
   return (
