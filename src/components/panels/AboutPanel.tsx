@@ -18,8 +18,8 @@ export default function AboutPanel() {
       className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center px-[6vw] overflow-hidden max-md:py-0 max-md:mt-6 max-md:pt-16 max-md:min-h-screen"
       style={{
         background: isMobile
-          ? 'radial-gradient(ellipse 80% 60% at 50% 45%, #1a1410 0%, #110f0c 35%, hsl(240 14% 6%) 70%)'
-          : 'radial-gradient(ellipse 50% 70% at 62% 50%, #1a1410 0%, #110f0c 30%, hsl(240 14% 6%) 60%)',
+          ? 'radial-gradient(ellipse 80% 60% at 50% 45%, #0d0d0f 0%, #0a0a0c 35%, hsl(240 14% 6%) 70%)'
+          : 'radial-gradient(ellipse 50% 70% at 62% 50%, #0d0d0f 0%, #0a0a0c 30%, hsl(240 14% 6%) 60%)',
       }}
     >
       <div className="w-full max-w-[1100px] mx-auto flex items-center gap-[clamp(1rem,3vw,3rem)] max-md:flex-col max-md:gap-2">
