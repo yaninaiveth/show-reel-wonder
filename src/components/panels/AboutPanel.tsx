@@ -53,8 +53,8 @@ export default function AboutPanel() {
               className="h-full w-full object-cover"
               style={{
                 filter: 'brightness(0.35) contrast(1.1) saturate(0.4) blur(8px)',
-                maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 75%)',
+                maskImage: shadowMask,
+                WebkitMaskImage: shadowMask,
                 transform: 'scale(1.04) translateZ(-30px)',
               }}
             />
