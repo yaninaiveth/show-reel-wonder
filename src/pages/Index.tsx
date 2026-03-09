@@ -28,7 +28,8 @@ export default function Index() {
       setTargetPanel(next);
       const isContact = next === 5;
       setTimeout(() => { setCurrent(next); }, isContact ? 3200 : 800);
-      setTimeout(() => { setIsAnimating(false); setTargetPanel(null); }, isContact ? 4000 : 2000);
+      setTimeout(() => { setIsAnimating(false); }, isContact ? 4200 : 2000);
+      setTimeout(() => { setTargetPanel(null); }, isContact ? 4800 : 2000);
     },
     [current, isAnimating]
   );
