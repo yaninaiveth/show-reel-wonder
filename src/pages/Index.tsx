@@ -15,6 +15,7 @@ const panels = [HeroPanel, DisciplinesPanel, AboutPanel, CareerPanel, GalleryPan
 
 export default function Index() {
   const isMobile = useIsMobile();
+  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const wheelAcc = useRef(0);
