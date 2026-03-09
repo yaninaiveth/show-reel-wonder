@@ -168,7 +168,7 @@ export default function GalleryPanel() {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        <div className="flex gap-[clamp(0.5rem,0.8vw,0.8rem)] h-full py-2 pr-[6vw]">
+        <div className="flex gap-[clamp(0.5rem,0.8vw,0.8rem)] h-full max-md:h-[60vh] py-2 pr-[6vw]">
           {items.map((item, i) => (
             <div
               key={i}
