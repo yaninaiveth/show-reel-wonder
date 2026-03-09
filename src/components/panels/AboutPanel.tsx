@@ -45,7 +45,7 @@ export default function AboutPanel() {
           style={{ perspective: '800px' }}
         >
           {/* Shadow/depth layer behind */}
-          <div className="absolute inset-[-25%] flex items-center justify-center overflow-hidden" style={{ zIndex: 1 }}>
+          <div className="absolute inset-[-25%] max-md:inset-0 flex items-center justify-center overflow-hidden" style={{ zIndex: 1 }}>
             <img
               src={josePole}
               alt=""
