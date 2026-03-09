@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SplashLoader from '@/components/SplashLoader';
 import HeroPanel from '@/components/panels/HeroPanel';
 import DisciplinesPanel from '@/components/panels/DisciplinesPanel';
 import AboutPanel from '@/components/panels/AboutPanel';
@@ -14,6 +15,7 @@ const panels = [HeroPanel, DisciplinesPanel, AboutPanel, CareerPanel, GalleryPan
 
 export default function Index() {
   const isMobile = useIsMobile();
+  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const wheelAcc = useRef(0);
@@ -57,6 +59,10 @@ export default function Index() {
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [current, goTo, isMobile]);
+
+  if (loading) {
+    return <SplashLoader onComplete={() => setLoading(false)} />;
+  }
 
   // Mobile: scrollable landing page
   if (isMobile) {
