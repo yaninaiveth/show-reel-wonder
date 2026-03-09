@@ -61,7 +61,7 @@ export default function AboutPanel() {
           </div>
 
           {/* Main figure — popping forward */}
-          <div className="absolute inset-[-20%] flex items-center justify-center overflow-hidden" style={{ zIndex: 10, transformStyle: 'preserve-3d' }}>
+          <div className="absolute inset-[-20%] max-md:inset-0 flex items-center justify-center overflow-hidden" style={{ zIndex: 10, transformStyle: 'preserve-3d' }}>
             <img
               src={josePole}
               alt="Jose Maria performing on pole"
