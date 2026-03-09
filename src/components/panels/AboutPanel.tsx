@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 import OrbitingTags from '@/components/OrbitingTags';
 import josePole from '@/assets/jose-pole.jpg';
 
