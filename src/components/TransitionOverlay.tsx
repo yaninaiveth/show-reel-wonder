@@ -69,9 +69,9 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             style={{ overflow: 'visible' }}
           >
             <motion.path
-              d="M-200,450 Q400,450 720,900 Q1040,900 1640,900"
+              d="M-300,400 C200,400 500,650 720,900 C940,1150 1200,1200 1700,1100"
               stroke="hsl(42, 40%, 38%)"
-              strokeWidth="140"
+              strokeWidth="220"
               fill="none"
               strokeLinecap="butt"
               initial={{ pathLength: 0 }}
