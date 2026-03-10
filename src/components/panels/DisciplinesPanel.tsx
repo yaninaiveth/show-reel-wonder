@@ -34,13 +34,13 @@ export default function DisciplinesPanel() {
     const centerX = sectionRect.width / 2;
     const centerY = sectionRect.height / 2;
 
-    const positions = emojiRefs.current.map((ref) => {
+    const positions = cardRefs.current.map((ref) => {
       if (!ref) return { x: 0, y: 0 };
       const rect = ref.getBoundingClientRect();
       const sRect = sectionRef.current!.getBoundingClientRect();
       return {
-        x: rect.left - sRect.left + rect.width / 2 - centerX,
-        y: rect.top - sRect.top + rect.height / 2 - centerY,
+        x: rect.left - sRect.left + 24 - centerX,
+        y: rect.top - sRect.top + 24 - centerY,
       };
     });
     setCardPositions(positions);
