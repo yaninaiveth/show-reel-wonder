@@ -32,6 +32,7 @@ const items: GalleryItem[] = [
   { src: photo7, alt: 'White tee', aspect: 'portrait', type: 'image' },
   { src: '/videos/Jose_1.mp4', alt: 'Performance video', aspect: 'portrait', type: 'video' },
   { src: '/videos/Jose_2.mp4', alt: 'Performance video 2', aspect: 'portrait', type: 'video' },
+  { src: '/videos/Jose_3.mp4', alt: 'Performance video 3', aspect: 'portrait', type: 'video' },
 ];
 
 /* ─── Lightbox ─── */
