@@ -23,6 +23,7 @@ const circlePositions = [
 export default function DisciplinesPanel() {
   const [phase, setPhase] = useState<'circles' | 'moving' | 'cards'>('circles');
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const emojiRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const [cardPositions, setCardPositions] = useState<{ x: number; y: number }[]>([]);
   const hasAnimated = useRef(false);
