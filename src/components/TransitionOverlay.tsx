@@ -60,6 +60,30 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
               }}
             />
           ))}
+
+          {/* Quarter-circle arc strip */}
+          <motion.div
+            className="absolute"
+            style={{
+              width: '140%',
+              height: '140%',
+              top: '-20%',
+              left: '-20%',
+              background: 'hsl(42, 40%, 38%)',
+              borderRadius: '0 0 100% 0',
+              opacity: 0.85,
+            }}
+            initial={{ scale: 0, originX: 0, originY: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0, originX: 1, originY: 1 }}
+            transition={{
+              scale: {
+                duration: 1,
+                ease: [0.76, 0, 0.24, 1],
+                delay: 0.08,
+              },
+            }}
+          />
         </div>
       )}
     </AnimatePresence>
