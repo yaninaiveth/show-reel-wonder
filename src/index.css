@@ -131,3 +131,22 @@
   width: 0;
   height: 0;
 }
+
+/* Subtle glitch effect */
+@keyframes glitch-subtle {
+  0%, 100% { transform: translate(0); opacity: 1; }
+  10% { transform: translate(-2px, 1px); opacity: 0.85; }
+  20% { transform: translate(1px, -1px); opacity: 1; }
+  30% { transform: translate(0); }
+  41% { transform: translate(2px, 0); opacity: 0.9; }
+  42% { transform: translate(-1px, 1px); }
+  44% { transform: translate(0); opacity: 1; }
+  70% { transform: translate(0); }
+  71% { transform: translate(-1px, -1px); opacity: 0.88; }
+  72% { transform: translate(1px, 0); opacity: 1; }
+  100% { transform: translate(0); }
+}
+
+.glitch-subtle {
+  animation: glitch-subtle 3s ease-in-out infinite;
+}
