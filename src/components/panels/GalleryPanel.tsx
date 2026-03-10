@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 
 import photo1 from '@/assets/gallery/photo-1.jpeg';
 import photo2 from '@/assets/gallery/photo-2.jpeg';
@@ -16,18 +16,20 @@ type GalleryItem = {
   src: string;
   alt: string;
   aspect: 'portrait' | 'landscape';
+  type: 'image' | 'video';
+  poster?: string;
 };
 
 const items: GalleryItem[] = [
-  { src: photo1, alt: 'Piano portrait 1', aspect: 'portrait' },
-  { src: photo3, alt: 'Piano dramatic', aspect: 'landscape' },
-  { src: photo2, alt: 'Piano portrait 2', aspect: 'portrait' },
-  { src: photo9, alt: 'Pagliacci opera', aspect: 'landscape' },
-  { src: photo5, alt: 'Pole performance', aspect: 'portrait' },
-  { src: photo8, alt: 'Handstand stage', aspect: 'portrait' },
-  { src: photo4, alt: 'Studio portrait', aspect: 'portrait' },
-  { src: photo6, alt: 'MTV look', aspect: 'portrait' },
-  { src: photo7, alt: 'White tee', aspect: 'portrait' },
+  { src: photo1, alt: 'Piano portrait 1', aspect: 'portrait', type: 'image' },
+  { src: photo3, alt: 'Piano dramatic', aspect: 'landscape', type: 'image' },
+  { src: photo2, alt: 'Piano portrait 2', aspect: 'portrait', type: 'image' },
+  { src: photo9, alt: 'Pagliacci opera', aspect: 'landscape', type: 'image' },
+  { src: photo5, alt: 'Pole performance', aspect: 'portrait', type: 'image' },
+  { src: photo8, alt: 'Handstand stage', aspect: 'portrait', type: 'image' },
+  { src: photo4, alt: 'Studio portrait', aspect: 'portrait', type: 'image' },
+  { src: photo6, alt: 'MTV look', aspect: 'portrait', type: 'image' },
+  { src: photo7, alt: 'White tee', aspect: 'portrait', type: 'image' },
 ];
 
 /* ─── Lightbox ─── */
@@ -44,6 +46,8 @@ function Lightbox({
   onPrev: () => void;
   onNext: () => void;
 }) {
+  const item = items[index];
+
   return (
     <motion.div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink/95 backdrop-blur-sm"
@@ -52,7 +56,6 @@ function Lightbox({
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
-      {/* Close */}
       <button
         onClick={onClose}
         className="absolute top-6 right-6 text-paper/60 hover:text-paper transition-colors z-10"
@@ -60,7 +63,6 @@ function Lightbox({
         <X className="w-6 h-6" />
       </button>
 
-      {/* Prev */}
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
         className="absolute left-4 top-1/2 -translate-y-1/2 text-paper/40 hover:text-paper transition-colors z-10"
@@ -68,7 +70,6 @@ function Lightbox({
         <ChevronLeft className="w-8 h-8" />
       </button>
 
-      {/* Next */}
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
         className="absolute right-4 top-1/2 -translate-y-1/2 text-paper/40 hover:text-paper transition-colors z-10"
@@ -76,23 +77,37 @@ function Lightbox({
         <ChevronRight className="w-8 h-8" />
       </button>
 
-      {/* Image */}
       <AnimatePresence mode="wait">
-        <motion.img
-          key={index}
-          src={items[index].src}
-          alt={items[index].alt}
-          className="max-h-[85vh] max-w-[90vw] object-contain select-none"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          onClick={(e) => e.stopPropagation()}
-          draggable={false}
-        />
+        {item.type === 'video' ? (
+          <motion.video
+            key={index}
+            src={item.src}
+            poster={item.poster}
+            controls
+            autoPlay
+            className="max-h-[85vh] max-w-[90vw] object-contain select-none"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        ) : (
+          <motion.img
+            key={index}
+            src={item.src}
+            alt={item.alt}
+            className="max-h-[85vh] max-w-[90vw] object-contain select-none"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => e.stopPropagation()}
+            draggable={false}
+          />
+        )}
       </AnimatePresence>
 
-      {/* Counter */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] tracking-[0.3em] uppercase text-dim">
         {index + 1} / {items.length}
       </div>
@@ -184,12 +199,39 @@ export default function GalleryPanel() {
                 item.aspect === 'landscape' ? 'w-[clamp(22rem,38vw,36rem)]' : 'w-[clamp(14rem,22vw,20rem)]'
               } h-full`}
             >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-full object-cover"
-                draggable={false}
-              />
+              {item.type === 'video' ? (
+                <>
+                  {item.poster ? (
+                    <img
+                      src={item.poster}
+                      alt={item.alt}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                    />
+                  ) : (
+                    <video
+                      src={item.src}
+                      className="w-full h-full object-cover pointer-events-none"
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  )}
+                  {/* Play icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-ink/60 backdrop-blur-sm flex items-center justify-center border border-paper/20">
+                      <Play className="w-5 h-5 text-paper ml-0.5" fill="currentColor" />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                  draggable={false}
+                />
+              )}
             </div>
           ))}
         </div>
