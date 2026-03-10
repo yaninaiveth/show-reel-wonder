@@ -68,18 +68,25 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             preserveAspectRatio="none"
             style={{ overflow: 'visible' }}
           >
+            <defs>
+              <marker id="arrow-tip" viewBox="0 0 10 10" refX="10" refY="5"
+                markerWidth="3" markerHeight="3" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="hsl(42, 40%, 38%)" />
+              </marker>
+            </defs>
             <motion.path
               d="M-300,400 C200,400 500,650 720,900 C940,1150 1200,1200 1700,1100"
               stroke="hsl(42, 40%, 38%)"
-              strokeWidth="220"
+              strokeWidth="280"
               fill="none"
-              strokeLinecap="butt"
+              strokeLinecap="round"
+              markerEnd="url(#arrow-tip)"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               exit={{ opacity: 0 }}
               transition={{
                 pathLength: {
-                  duration: 1,
+                  duration: 1.5,
                   ease: [0.76, 0, 0.24, 1],
                   delay: 0.1,
                 },
