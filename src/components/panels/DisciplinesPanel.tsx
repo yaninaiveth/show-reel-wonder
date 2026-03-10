@@ -34,7 +34,7 @@ const getCirclePositions = () => {
 };
 
 export default function DisciplinesPanel() {
-  const [phase, setPhase] = useState<'circles' | 'moving' | 'cards'>('circles');
+  const [phase, setPhase] = useState<'waiting' | 'circles' | 'moving' | 'cards'>('waiting');
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const emojiRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
@@ -59,18 +59,26 @@ export default function DisciplinesPanel() {
     setCardPositions(positions);
   }, []);
 
+  // Wait for section to be visible before starting animation
   useEffect(() => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    // Measure card positions while they're invisible
-    const timer1 = setTimeout(() => {
-      measureCards();
-      setTimeout(() => setPhase('moving'), 2000);
-      setTimeout(() => setPhase('cards'), 2800);
-    }, 100);
-
-    return () => clearTimeout(timer1);
+    if (!sectionRef.current || hasAnimated.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          setPhase('circles');
+          setTimeout(() => {
+            measureCards();
+            setTimeout(() => setPhase('moving'), 2000);
+            setTimeout(() => setPhase('cards'), 2800);
+          }, 100);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, [measureCards]);
 
   return (
@@ -87,6 +95,7 @@ export default function DisciplinesPanel() {
       </div>
 
       {/* Floating emoji circles overlay */}
+      {phase !== 'waiting' && (
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10 }}>
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
@@ -131,6 +140,7 @@ export default function DisciplinesPanel() {
           );
         })}
       </div>
+      )}
 
       <div className="relative w-full" style={{ zIndex: 1 }}>
         {/* Header */}
