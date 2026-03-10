@@ -15,6 +15,7 @@ import photo10 from '@/assets/gallery/photo-10.jpg';
 import photo11 from '@/assets/gallery/photo-11.jpg';
 import photo12 from '@/assets/gallery/photo-12.jpg';
 import photo13 from '@/assets/gallery/photo-13.jpg';
+import photo14 from '@/assets/gallery/photo-14.jpg';
 
 type GalleryItem = {
   src: string;
@@ -33,6 +34,7 @@ const items: GalleryItem[] = [
   { src: photo13, alt: 'Pagliacci scene', aspect: 'landscape', type: 'image' },
   { src: photo11, alt: 'Clown makeup', aspect: 'portrait', type: 'image' },
   { src: photo5, alt: 'Pole performance', aspect: 'portrait', type: 'image' },
+  { src: photo14, alt: 'Trapeze performance', aspect: 'portrait', type: 'image' },
   { src: photo12, alt: 'Arena stage', aspect: 'portrait', type: 'image' },
   { src: photo8, alt: 'Handstand stage', aspect: 'portrait', type: 'image' },
   { src: photo4, alt: 'Studio portrait', aspect: 'portrait', type: 'image' },
