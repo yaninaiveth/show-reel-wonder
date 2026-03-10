@@ -87,7 +87,7 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
                 clipPath: {
                   duration: 1.5,
                   ease: [0.76, 0, 0.24, 1],
-                  delay: 0.1,
+                  delay: 0.5,
                 },
               }}
             />
