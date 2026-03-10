@@ -102,8 +102,9 @@ export default function DisciplinesPanel() {
           const isMoving = phase === 'moving' || phase === 'cards';
           const hasPositions = cardPositions.length > 0;
           const positions = getCirclePositions();
-          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : positions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
-          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : positions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : isMobile ? positions[i].x : positions[i].x * (window.innerWidth / 100);
+          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : isMobile ? positions[i].y : positions[i].y * (window.innerHeight / 100);
 
           return (
             <motion.div
