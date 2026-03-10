@@ -12,15 +12,20 @@ const disciplines = [
 
 // Circle layout positions - adapts to screen size
 const getCirclePositions = () => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  if (typeof window === 'undefined') return Array(6).fill({ x: 0, y: 0 });
+  const w = window.innerWidth;
+  const isMobile = w < 768;
   if (isMobile) {
+    // Scale spread based on viewport width so circles stay inside
+    const spreadX = Math.min(w * 0.28, 90);
+    const spreadY = Math.min(w * 0.22, 70);
     return [
-      { x: -16, y: -16 },
-      { x: 16, y: -16 },
-      { x: -16, y: 0 },
-      { x: 16, y: 0 },
-      { x: -16, y: 16 },
-      { x: 16, y: 16 },
+      { x: -spreadX, y: -spreadY },
+      { x: spreadX, y: -spreadY },
+      { x: -spreadX, y: 0 },
+      { x: spreadX, y: 0 },
+      { x: -spreadX, y: spreadY },
+      { x: spreadX, y: spreadY },
     ];
   }
   return [
@@ -97,8 +102,9 @@ export default function DisciplinesPanel() {
           const isMoving = phase === 'moving' || phase === 'cards';
           const hasPositions = cardPositions.length > 0;
           const positions = getCirclePositions();
-          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : positions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
-          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : positions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : isMobile ? positions[i].x : positions[i].x * (window.innerWidth / 100);
+          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : isMobile ? positions[i].y : positions[i].y * (window.innerHeight / 100);
 
           return (
             <motion.div
