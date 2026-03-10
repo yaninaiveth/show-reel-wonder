@@ -16,11 +16,11 @@ const getCirclePositions = () => {
   const w = window.innerWidth;
   const isMobile = w < 768;
   if (isMobile) {
-    const circleSize = 48; // ~3rem
-    const safeMargin = circleSize / 2 + 10;
+    const circleSize = 48;
+    const safeMargin = circleSize / 2 + 20;
     const maxSpreadX = (w / 2) - safeMargin;
-    const spreadX = Math.min(w * 0.22, maxSpreadX);
-    const spreadY = Math.min(w * 0.18, 70);
+    const spreadX = Math.min(w * 0.18, maxSpreadX);
+    const spreadY = Math.min(w * 0.15, 60);
     return [
       { x: -spreadX, y: -spreadY },
       { x: spreadX, y: -spreadY },
