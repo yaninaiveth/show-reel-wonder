@@ -12,12 +12,12 @@ const disciplines = [
 
 // Circle layout positions (centered on screen, 2 rows of 3)
 const circlePositions = [
-  { x: -12, y: -6 },
-  { x: 0, y: -6 },
-  { x: 12, y: -6 },
-  { x: -12, y: 6 },
-  { x: 0, y: 6 },
-  { x: 12, y: 6 },
+  { x: -18, y: -8 },
+  { x: 0, y: -8 },
+  { x: 18, y: -8 },
+  { x: -18, y: 8 },
+  { x: 0, y: 8 },
+  { x: 18, y: 8 },
 ];
 
 export default function DisciplinesPanel() {
