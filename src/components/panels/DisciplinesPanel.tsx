@@ -88,26 +88,30 @@ export default function DisciplinesPanel() {
               animate={{
                 x: targetX,
                 y: targetY,
-                scale: isMoving ? 0.7 : 1,
-                opacity: phase === 'cards' ? 0 : 1,
+                scale: isMoving ? 0.45 : 1,
               }}
               transition={{
                 x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
                 y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-                scale: { duration: 0.4 },
-                opacity: { duration: 0.3, delay: 0.2 },
+                scale: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
               }}
             >
-              <div
+              <motion.div
                 className="rounded-full flex items-center justify-center border border-dim/20"
                 style={{
                   width: 'clamp(4rem, 6.5vw, 5.5rem)',
                   height: 'clamp(4rem, 6.5vw, 5.5rem)',
                   background: 'white',
                 }}
+                animate={{
+                  opacity: phase === 'cards' ? 0 : 1,
+                }}
+                transition={{
+                  opacity: { duration: 1.2, ease: 'easeOut' },
+                }}
               >
-                <span className="text-[clamp(1.5rem, 2.8vw, 2.2rem)]">{d.ico}</span>
-              </div>
+                <span className="text-[clamp(1.5rem,2.8vw,2.2rem)]">{d.ico}</span>
+              </motion.div>
             </motion.div>
           );
         })}
