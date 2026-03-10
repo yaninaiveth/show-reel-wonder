@@ -12,15 +12,20 @@ const disciplines = [
 
 // Circle layout positions - adapts to screen size
 const getCirclePositions = () => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  if (typeof window === 'undefined') return Array(6).fill({ x: 0, y: 0 });
+  const w = window.innerWidth;
+  const isMobile = w < 768;
   if (isMobile) {
+    // Scale spread based on viewport width so circles stay inside
+    const spreadX = Math.min(w * 0.28, 90);
+    const spreadY = Math.min(w * 0.22, 70);
     return [
-      { x: -16, y: -16 },
-      { x: 16, y: -16 },
-      { x: -16, y: 0 },
-      { x: 16, y: 0 },
-      { x: -16, y: 16 },
-      { x: 16, y: 16 },
+      { x: -spreadX, y: -spreadY },
+      { x: spreadX, y: -spreadY },
+      { x: -spreadX, y: 0 },
+      { x: spreadX, y: 0 },
+      { x: -spreadX, y: spreadY },
+      { x: spreadX, y: spreadY },
     ];
   }
   return [
