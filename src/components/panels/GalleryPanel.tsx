@@ -11,6 +11,10 @@ import photo6 from '@/assets/gallery/photo-6.jpeg';
 import photo7 from '@/assets/gallery/photo-7.jpeg';
 import photo8 from '@/assets/gallery/photo-8.jpeg';
 import photo9 from '@/assets/gallery/photo-9.jpg';
+import photo10 from '@/assets/gallery/photo-10.jpg';
+import photo11 from '@/assets/gallery/photo-11.jpg';
+import photo12 from '@/assets/gallery/photo-12.jpg';
+import photo13 from '@/assets/gallery/photo-13.jpg';
 
 type GalleryItem = {
   src: string;
@@ -25,7 +29,11 @@ const items: GalleryItem[] = [
   { src: photo3, alt: 'Piano dramatic', aspect: 'landscape', type: 'image' },
   { src: photo2, alt: 'Piano portrait 2', aspect: 'portrait', type: 'image' },
   { src: photo9, alt: 'Pagliacci opera', aspect: 'landscape', type: 'image' },
+  { src: photo10, alt: 'Pagliacci stage', aspect: 'landscape', type: 'image' },
+  { src: photo13, alt: 'Pagliacci scene', aspect: 'landscape', type: 'image' },
+  { src: photo11, alt: 'Clown makeup', aspect: 'portrait', type: 'image' },
   { src: photo5, alt: 'Pole performance', aspect: 'portrait', type: 'image' },
+  { src: photo12, alt: 'Arena stage', aspect: 'portrait', type: 'image' },
   { src: photo8, alt: 'Handstand stage', aspect: 'portrait', type: 'image' },
   { src: photo4, alt: 'Studio portrait', aspect: 'portrait', type: 'image' },
   { src: photo6, alt: 'MTV look', aspect: 'portrait', type: 'image' },
