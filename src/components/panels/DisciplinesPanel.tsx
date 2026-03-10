@@ -149,7 +149,7 @@ export default function DisciplinesPanel() {
               }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
             >
-              <div ref={(el) => { emojiRefs.current[i] = el; }} className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1">{d.ico}</div>
+              <div ref={(el) => { emojiRefs.current[i] = el; }} className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1 invisible">{d.ico}</div>
               <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper group-hover:text-ink whitespace-pre-line transition-colors duration-300">
                 {d.name}
               </div>
