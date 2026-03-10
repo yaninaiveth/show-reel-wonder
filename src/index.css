@@ -135,11 +135,11 @@
 /* Subtle glitch effect */
 @keyframes glitch-subtle {
   0%, 100% { transform: translate(0); opacity: 1; }
-  5% { transform: translate(-1px, 0.5px); opacity: 0.92; }
+  5% { transform: translate(-1.5px, 0.5px); opacity: 0.9; }
   7% { transform: translate(0); opacity: 1; }
-  35% { transform: translate(1px, -0.5px); opacity: 0.9; }
-  37% { transform: translate(0); opacity: 1; }
-  70% { transform: translate(-0.5px, -0.5px); opacity: 0.93; }
+  35% { transform: translate(1.5px, -0.5px) skewX(0.2deg); opacity: 0.88; }
+  37% { transform: translate(0) skewX(0); opacity: 1; }
+  70% { transform: translate(-1px, -1px); opacity: 0.91; }
   72% { transform: translate(0); opacity: 1; }
 }
 
