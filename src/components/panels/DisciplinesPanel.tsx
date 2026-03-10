@@ -73,46 +73,44 @@ export default function DisciplinesPanel() {
       </div>
 
       {/* Floating emoji circles overlay */}
-      <AnimatePresence>
-        {phase !== 'cards' && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10 }}>
-            {disciplines.map((d, i) => {
-              const isMoving = phase === 'moving' && cardPositions.length > 0;
-              const targetX = isMoving ? cardPositions[i]?.x ?? 0 : circlePositions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
-              const targetY = isMoving ? cardPositions[i]?.y ?? 0 : circlePositions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: phase === 'cards' ? 0 : 10 }}>
+        {disciplines.map((d, i) => {
+          const isMoving = phase === 'moving' || phase === 'cards';
+          const hasPositions = cardPositions.length > 0;
+          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : circlePositions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
+          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : circlePositions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
 
-              return (
-                <motion.div
-                  key={i}
-                  className="absolute flex items-center justify-center"
-                  animate={{
-                    x: targetX,
-                    y: targetY,
-                    scale: isMoving ? 0.8 : 1,
-                  }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  transition={{
-                    x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-                    y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-                    scale: { duration: 0.4 },
-                  }}
-                >
-                  <div
-                    className="rounded-full flex items-center justify-center border border-dim/20"
-                    style={{
-                      width: 'clamp(4rem, 6.5vw, 5.5rem)',
-                      height: 'clamp(4rem, 6.5vw, 5.5rem)',
-                      background: 'white',
-                    }}
-                  >
-                    <span className="text-[clamp(1.5rem, 2.8vw, 2.2rem)]">{d.ico}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        )}
-      </AnimatePresence>
+          return (
+            <motion.div
+              key={i}
+              className="absolute flex items-center justify-center"
+              animate={{
+                x: targetX,
+                y: targetY,
+                scale: isMoving ? 0.7 : 1,
+                opacity: phase === 'cards' ? 0 : 1,
+              }}
+              transition={{
+                x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                scale: { duration: 0.4 },
+                opacity: { duration: 0.3, delay: 0.2 },
+              }}
+            >
+              <div
+                className="rounded-full flex items-center justify-center border border-dim/20"
+                style={{
+                  width: 'clamp(4rem, 6.5vw, 5.5rem)',
+                  height: 'clamp(4rem, 6.5vw, 5.5rem)',
+                  background: 'white',
+                }}
+              >
+                <span className="text-[clamp(1.5rem, 2.8vw, 2.2rem)]">{d.ico}</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
 
       <div className="relative w-full" style={{ zIndex: 1 }}>
         {/* Header */}
