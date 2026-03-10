@@ -92,7 +92,6 @@ export default function DisciplinesPanel() {
       </div>
 
       {/* Floating emoji circles overlay */}
-      {phase !== 'waiting' && (
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10 }}>
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
