@@ -10,15 +10,28 @@ const disciplines = [
   { ico: '📸', name: 'Modeling\n& Video', desc: 'Fashion shows, brands & music videos' },
 ];
 
-// Circle layout positions (centered on screen, 2 rows of 3)
-const circlePositions = [
-  { x: -18, y: -8 },
-  { x: 0, y: -8 },
-  { x: 18, y: -8 },
-  { x: -18, y: 8 },
-  { x: 0, y: 8 },
-  { x: 18, y: 8 },
-];
+// Circle layout positions - adapts to screen size
+const getCirclePositions = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  if (isMobile) {
+    return [
+      { x: -12, y: -10 },
+      { x: 12, y: -10 },
+      { x: -12, y: 0 },
+      { x: 12, y: 0 },
+      { x: -12, y: 10 },
+      { x: 12, y: 10 },
+    ];
+  }
+  return [
+    { x: -18, y: -8 },
+    { x: 0, y: -8 },
+    { x: 18, y: -8 },
+    { x: -18, y: 8 },
+    { x: 0, y: 8 },
+    { x: 18, y: 8 },
+  ];
+};
 
 export default function DisciplinesPanel() {
   const [phase, setPhase] = useState<'circles' | 'moving' | 'cards'>('circles');
