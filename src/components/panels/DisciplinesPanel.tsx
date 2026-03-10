@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const disciplines = [
   { ico: '🎪', name: 'Aerial\nAcrobatics', desc: 'Harness, trapeze & fly pole' },
