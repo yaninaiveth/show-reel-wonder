@@ -16,8 +16,10 @@ const getCirclePositions = () => {
   const w = window.innerWidth;
   const isMobile = w < 768;
   if (isMobile) {
-    // Scale spread based on viewport width so circles stay inside
-    const spreadX = Math.min(w * 0.22, 90);
+    const circleSize = 48; // ~3rem
+    const safeMargin = circleSize / 2 + 10;
+    const maxSpreadX = (w / 2) - safeMargin;
+    const spreadX = Math.min(w * 0.22, maxSpreadX);
     const spreadY = Math.min(w * 0.18, 70);
     return [
       { x: -spreadX, y: -spreadY },
