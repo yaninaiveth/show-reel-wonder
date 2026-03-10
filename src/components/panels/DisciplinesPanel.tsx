@@ -16,10 +16,10 @@ const getCirclePositions = () => {
   const w = window.innerWidth;
   const isMobile = w < 768;
   if (isMobile) {
-    const circleSize = 48;
-    const safeMargin = circleSize / 2 + 20;
+    const circleSize = w < 350 ? 40 : 48;
+    const safeMargin = circleSize + 10;
     const maxSpreadX = (w / 2) - safeMargin;
-    const spreadX = Math.min(w * 0.18, maxSpreadX);
+    const spreadX = Math.max(30, Math.min(w * 0.18, maxSpreadX));
     const spreadY = Math.min(w * 0.15, 60);
     return [
       { x: -spreadX, y: -spreadY },
@@ -125,8 +125,8 @@ export default function DisciplinesPanel() {
               <motion.div
                 className="absolute rounded-full border border-dim/20"
                 style={{
-                  width: 'clamp(3rem, 6.5vw, 5.5rem)',
-                  height: 'clamp(3rem, 6.5vw, 5.5rem)',
+                  width: 'clamp(2.5rem, 6.5vw, 5.5rem)',
+                  height: 'clamp(2.5rem, 6.5vw, 5.5rem)',
                   background: 'white',
                 }}
                 animate={{
