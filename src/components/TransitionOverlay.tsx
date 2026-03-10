@@ -61,21 +61,32 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             />
           ))}
 
-          {/* 4th strip — curved swoosh from middle to bottom */}
-          <motion.div
-            className="absolute"
-            style={{
-              left: '-20%',
-              width: '140%',
-              height: '140%',
-              bottom: '-40%',
-              background: 'transparent',
-              borderTop: '12vh solid hsl(42, 40%, 38%)',
-              borderRadius: '50% 0 0 0',
-            }}
-            initial={{ x: '-120%' }}
-            animate={{ x: '0%' }}
-            exit={{ x: '120%' }}
+          {/* 4th strip — curved swoosh, same width as others, from mid-screen curving down */}
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 1440 900"
+            preserveAspectRatio="none"
+            style={{ overflow: 'visible' }}
+          >
+            <motion.path
+              d="M-200,450 Q400,450 720,900 Q1040,900 1640,900"
+              stroke="hsl(42, 40%, 38%)"
+              strokeWidth="140"
+              fill="none"
+              strokeLinecap="butt"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                pathLength: {
+                  duration: 1,
+                  ease: [0.76, 0, 0.24, 1],
+                  delay: 0.1,
+                },
+                opacity: { duration: 0.4 },
+              }}
+            />
+          </svg>
             transition={{
               x: {
                 duration: 1.1,
