@@ -87,14 +87,6 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
               }}
             />
           </svg>
-            transition={{
-              x: {
-                duration: 1.1,
-                ease: [0.76, 0, 0.24, 1],
-                delay: 0.18,
-              },
-            }}
-          />
         </div>
       )}
     </AnimatePresence>
