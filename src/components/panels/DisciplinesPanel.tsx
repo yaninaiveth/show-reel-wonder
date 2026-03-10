@@ -52,10 +52,8 @@ export default function DisciplinesPanel() {
     // Measure card positions while they're invisible
     const timer1 = setTimeout(() => {
       measureCards();
-      // Start moving emojis to card positions
-      setTimeout(() => setPhase('moving'), 800);
-      // Show cards
-      setTimeout(() => setPhase('cards'), 1600);
+      setTimeout(() => setPhase('moving'), 2000);
+      setTimeout(() => setPhase('cards'), 2800);
     }, 100);
 
     return () => clearTimeout(timer1);
