@@ -31,6 +31,12 @@ const strips = [
   },
 ];
 
+// Quarter-circle arc path: starts from bottom-left, curves to top-right
+const arcKeyframes = {
+  x: ['-100%', '-40%', '20%', '80%', '120%'],
+  y: ['80%', '30%', '-10%', '-40%', '-100%'],
+};
+
 export default function TransitionOverlay({ isAnimating }: TransitionOverlayProps) {
   return (
     <AnimatePresence>
@@ -61,27 +67,26 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             />
           ))}
 
-          {/* Quarter-circle arc strip */}
+          {/* Arc-trajectory strip */}
           <motion.div
             className="absolute"
             style={{
-              width: '140%',
-              height: '140%',
-              top: '-20%',
-              left: '-20%',
+              width: '45%',
+              height: '28%',
               background: 'hsl(42, 40%, 38%)',
-              borderRadius: '0 0 100% 0',
-              opacity: 0.85,
+              clipPath: 'polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%)',
+              rotate: '-35deg',
             }}
-            initial={{ scale: 0, originX: 0, originY: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0, originX: 1, originY: 1 }}
+            initial={{ x: arcKeyframes.x[0], y: arcKeyframes.y[0] }}
+            animate={{
+              x: arcKeyframes.x,
+              y: arcKeyframes.y,
+            }}
             transition={{
-              scale: {
-                duration: 1,
-                ease: [0.76, 0, 0.24, 1],
-                delay: 0.08,
-              },
+              duration: 1.4,
+              ease: [0.76, 0, 0.24, 1],
+              delay: 0.06,
+              times: [0, 0.25, 0.5, 0.75, 1],
             }}
           />
         </div>
