@@ -17,8 +17,8 @@ const getCirclePositions = () => {
   const isMobile = w < 768;
   if (isMobile) {
     // Scale spread based on viewport width so circles stay inside
-    const spreadX = Math.min(w * 0.28, 90);
-    const spreadY = Math.min(w * 0.22, 70);
+    const spreadX = Math.min(w * 0.22, 90);
+    const spreadY = Math.min(w * 0.18, 70);
     return [
       { x: -spreadX, y: -spreadY },
       { x: spreadX, y: -spreadY },
@@ -123,8 +123,8 @@ export default function DisciplinesPanel() {
               <motion.div
                 className="absolute rounded-full border border-dim/20"
                 style={{
-                  width: 'clamp(4rem, 6.5vw, 5.5rem)',
-                  height: 'clamp(4rem, 6.5vw, 5.5rem)',
+                  width: 'clamp(3rem, 6.5vw, 5.5rem)',
+                  height: 'clamp(3rem, 6.5vw, 5.5rem)',
                   background: 'white',
                 }}
                 animate={{
