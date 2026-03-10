@@ -61,17 +61,17 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             />
           ))}
 
-          {/* 4th strip — curved swoosh shape */}
+          {/* 4th strip — curved swoosh from middle to bottom */}
           <motion.div
             className="absolute"
             style={{
               left: '-20%',
               width: '140%',
               height: '140%',
-              top: '-40%',
+              bottom: '-40%',
               background: 'transparent',
-              borderBottom: '12vh solid hsl(42, 40%, 38%)',
-              borderRadius: '0 0 50% 0',
+              borderTop: '12vh solid hsl(42, 40%, 38%)',
+              borderRadius: '50% 0 0 0',
             }}
             initial={{ x: '-120%' }}
             animate={{ x: '0%' }}
