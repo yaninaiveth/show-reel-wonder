@@ -67,8 +67,8 @@ export default function DisciplinesPanel() {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
           measureCards();
-          setTimeout(() => setPhase('moving'), 2000);
-          setTimeout(() => setPhase('cards'), 2800);
+          setTimeout(() => setPhase('moving'), 1500);
+          setTimeout(() => setPhase('cards'), 2300);
           observer.disconnect();
         }
       },
