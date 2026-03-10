@@ -10,15 +10,28 @@ const disciplines = [
   { ico: '📸', name: 'Modeling\n& Video', desc: 'Fashion shows, brands & music videos' },
 ];
 
-// Circle layout positions (centered on screen, 2 rows of 3)
-const circlePositions = [
-  { x: -18, y: -8 },
-  { x: 0, y: -8 },
-  { x: 18, y: -8 },
-  { x: -18, y: 8 },
-  { x: 0, y: 8 },
-  { x: 18, y: 8 },
-];
+// Circle layout positions - adapts to screen size
+const getCirclePositions = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  if (isMobile) {
+    return [
+      { x: -12, y: -10 },
+      { x: 12, y: -10 },
+      { x: -12, y: 0 },
+      { x: 12, y: 0 },
+      { x: -12, y: 10 },
+      { x: 12, y: 10 },
+    ];
+  }
+  return [
+    { x: -18, y: -8 },
+    { x: 0, y: -8 },
+    { x: 18, y: -8 },
+    { x: -18, y: 8 },
+    { x: 0, y: 8 },
+    { x: 18, y: 8 },
+  ];
+};
 
 export default function DisciplinesPanel() {
   const [phase, setPhase] = useState<'circles' | 'moving' | 'cards'>('circles');
@@ -78,8 +91,9 @@ export default function DisciplinesPanel() {
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
           const hasPositions = cardPositions.length > 0;
-          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : circlePositions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
-          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : circlePositions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
+          const positions = getCirclePositions();
+          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : positions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
+          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : positions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
 
           return (
             <motion.div
