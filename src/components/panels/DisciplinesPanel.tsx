@@ -15,12 +15,12 @@ const getCirclePositions = () => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   if (isMobile) {
     return [
-      { x: -12, y: -10 },
-      { x: 12, y: -10 },
-      { x: -12, y: 0 },
-      { x: 12, y: 0 },
-      { x: -12, y: 10 },
-      { x: 12, y: 10 },
+      { x: -16, y: -12 },
+      { x: 16, y: -12 },
+      { x: -16, y: 0 },
+      { x: 16, y: 0 },
+      { x: -16, y: 12 },
+      { x: 16, y: 12 },
     ];
   }
   return [
