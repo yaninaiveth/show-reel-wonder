@@ -34,7 +34,7 @@ const getCirclePositions = () => {
 };
 
 export default function DisciplinesPanel() {
-  const [phase, setPhase] = useState<'waiting' | 'circles' | 'moving' | 'cards'>('waiting');
+  const [phase, setPhase] = useState<'waiting' | 'circles' | 'moving' | 'cards'>('circles');
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const emojiRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
