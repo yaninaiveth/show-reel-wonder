@@ -9,11 +9,6 @@ const contacts = [
 export default function ContactPanel() {
   return (
     <section className="absolute inset-0 max-md:relative max-md:inset-auto flex items-center justify-center text-center px-[6vw] bg-ink max-md:py-16 max-md:min-h-screen">
-      {/* Glow */}
-      <div
-        className="absolute w-[60vw] h-[60vw] rounded-full bottom-[-22vw] left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, hsl(42, 52%, 54%, 0.07) 0%, transparent 65%)' }}
-      />
 
       <div className="w-full relative">
         <div className="font-mono text-[0.58rem] tracking-[0.5em] uppercase text-gold mb-5 flex items-center justify-center gap-4">
