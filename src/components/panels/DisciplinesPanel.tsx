@@ -74,7 +74,7 @@ export default function DisciplinesPanel() {
       </div>
 
       {/* Floating emoji circles overlay */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: phase === 'cards' ? 0 : 10 }}>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10 }}>
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
           const hasPositions = cardPositions.length > 0;
@@ -88,16 +88,15 @@ export default function DisciplinesPanel() {
               animate={{
                 x: targetX,
                 y: targetY,
-                scale: isMoving ? 0.45 : 1,
               }}
               transition={{
                 x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
                 y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-                scale: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
               }}
             >
+              {/* White circle - fades away after landing */}
               <motion.div
-                className="rounded-full flex items-center justify-center border border-dim/20"
+                className="absolute rounded-full border border-dim/20"
                 style={{
                   width: 'clamp(4rem, 6.5vw, 5.5rem)',
                   height: 'clamp(4rem, 6.5vw, 5.5rem)',
@@ -105,13 +104,15 @@ export default function DisciplinesPanel() {
                 }}
                 animate={{
                   opacity: phase === 'cards' ? 0 : 1,
+                  scale: phase === 'cards' ? 0.5 : 1,
                 }}
                 transition={{
-                  opacity: { duration: 1.2, ease: 'easeOut' },
+                  opacity: { duration: 1.5, ease: 'easeOut' },
+                  scale: { duration: 1.5, ease: 'easeOut' },
                 }}
-              >
-                <span className="text-[clamp(1.5rem,2.8vw,2.2rem)]">{d.ico}</span>
-              </motion.div>
+              />
+              {/* Emoji - stays visible always */}
+              <span className="relative text-[clamp(1.1rem,2vw,1.7rem)]">{d.ico}</span>
             </motion.div>
           );
         })}
@@ -148,7 +149,7 @@ export default function DisciplinesPanel() {
               }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
             >
-              <div ref={(el) => { emojiRefs.current[i] = el; }} className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1">{d.ico}</div>
+              <div ref={(el) => { emojiRefs.current[i] = el; }} className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1 invisible">{d.ico}</div>
               <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper group-hover:text-ink whitespace-pre-line transition-colors duration-300">
                 {d.name}
               </div>
