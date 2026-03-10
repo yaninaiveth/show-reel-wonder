@@ -71,12 +71,12 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             {/* Filled tapered curved shape — wide at start, narrows to a point */}
             <motion.path
               d={[
-                'M-300,260',
-                'C200,260 500,510 720,760',
-                'C940,1010 1200,1060 1700,960',
-                'L1700,960',
-                'C1200,1060 940,1150 720,900',
-                'C500,650 200,540 -300,540',
+                'M-300,160',
+                'C200,160 500,450 720,700',
+                'C940,950 1200,1010 1700,910',
+                'L1700,910',
+                'C1200,1110 940,1250 720,1000',
+                'C500,750 200,640 -300,640',
                 'Z',
               ].join(' ')}
               fill="hsl(42, 40%, 38%)"
