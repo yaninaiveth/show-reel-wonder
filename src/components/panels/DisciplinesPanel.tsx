@@ -91,8 +91,9 @@ export default function DisciplinesPanel() {
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
           const hasPositions = cardPositions.length > 0;
-          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : circlePositions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
-          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : circlePositions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
+          const positions = getCirclePositions();
+          const targetX = isMoving && hasPositions ? cardPositions[i]?.x ?? 0 : positions[i].x * (typeof window !== 'undefined' ? window.innerWidth / 100 : 10);
+          const targetY = isMoving && hasPositions ? cardPositions[i]?.y ?? 0 : positions[i].y * (typeof window !== 'undefined' ? window.innerHeight / 100 : 6);
 
           return (
             <motion.div
