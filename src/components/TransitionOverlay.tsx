@@ -61,23 +61,27 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             />
           ))}
 
-          {/* 4th strip — same arrow shape, curved arc trajectory */}
+          {/* 4th strip — curved swoosh shape */}
           <motion.div
             className="absolute"
             style={{
-              left: '-10%',
-              width: '120%',
-              height: '34%',
-              background: 'hsl(42, 40%, 38%)',
-              clipPath: 'polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%)',
+              left: '-20%',
+              width: '140%',
+              height: '140%',
+              top: '-40%',
+              background: 'transparent',
+              borderBottom: '12vh solid hsl(42, 40%, 38%)',
+              borderRadius: '0 0 50% 0',
             }}
-            initial={{ x: '120%', y: '120%' }}
-            animate={{ x: '0%', y: '20%' }}
-            exit={{ x: '-120%', y: '-80%' }}
+            initial={{ x: '-120%' }}
+            animate={{ x: '0%' }}
+            exit={{ x: '120%' }}
             transition={{
-              duration: 1.1,
-              ease: [0.76, 0, 0.24, 1],
-              delay: 0.06,
+              x: {
+                duration: 1.1,
+                ease: [0.76, 0, 0.24, 1],
+                delay: 0.18,
+              },
             }}
           />
         </div>
