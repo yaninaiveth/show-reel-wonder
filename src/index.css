@@ -136,11 +136,17 @@
 @keyframes glitch-subtle {
   0%, 100% { transform: translate(0); opacity: 1; }
   5% { transform: translate(-1.5px, 0.5px); opacity: 0.9; }
+  6% { transform: translate(1px, -0.5px); opacity: 0.95; }
   7% { transform: translate(0); opacity: 1; }
-  35% { transform: translate(1.5px, -0.5px) skewX(0.5deg); opacity: 0.88; }
+  34% { transform: translate(0); }
+  35% { transform: translate(2px, -0.5px) skewX(0.5deg); opacity: 0.86; }
+  36% { transform: translate(-1px, 1px) skewX(-0.3deg); opacity: 0.92; }
   37% { transform: translate(0) skewX(0); opacity: 1; }
-  70% { transform: translate(-1px, -1px); opacity: 0.91; }
-  72% { transform: translate(0); opacity: 1; }
+  52% { transform: translate(-1px, -0.5px); opacity: 0.91; }
+  53% { transform: translate(0); opacity: 1; }
+  70% { transform: translate(-1px, -1px) skewX(0.3deg); opacity: 0.89; }
+  71% { transform: translate(1.5px, 0.5px); opacity: 0.93; }
+  72% { transform: translate(0) skewX(0); opacity: 1; }
 }
 
 .glitch-subtle {
