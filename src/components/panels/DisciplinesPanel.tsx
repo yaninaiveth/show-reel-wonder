@@ -59,18 +59,26 @@ export default function DisciplinesPanel() {
     setCardPositions(positions);
   }, []);
 
+  // Wait for section to be visible before starting animation
   useEffect(() => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    // Measure card positions while they're invisible
-    const timer1 = setTimeout(() => {
-      measureCards();
-      setTimeout(() => setPhase('moving'), 2000);
-      setTimeout(() => setPhase('cards'), 2800);
-    }, 100);
-
-    return () => clearTimeout(timer1);
+    if (!sectionRef.current || hasAnimated.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          setPhase('circles');
+          setTimeout(() => {
+            measureCards();
+            setTimeout(() => setPhase('moving'), 2000);
+            setTimeout(() => setPhase('cards'), 2800);
+          }, 100);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, [measureCards]);
 
   return (
