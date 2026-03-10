@@ -73,23 +73,22 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
               d={[
                 'M-300,160',
                 'C200,160 500,450 720,700',
-                'C940,950 1200,1010 1700,910',
-                'L1700,910',
-                'C1200,1110 940,1250 720,1000',
+                'C940,950 1300,1050 1900,1000',
+                'L1900,1000',
+                'C1300,1150 940,1250 720,1000',
                 'C500,750 200,640 -300,640',
                 'Z',
               ].join(' ')}
               fill="hsl(42, 40%, 38%)"
               initial={{ clipPath: 'inset(0 100% 0 0)' }}
               animate={{ clipPath: 'inset(0 0% 0 0)' }}
-              exit={{ opacity: 0 }}
+              exit={{ clipPath: 'inset(0 0% 0 100%)' }}
               transition={{
                 clipPath: {
                   duration: 1.5,
                   ease: [0.76, 0, 0.24, 1],
                   delay: 0.1,
                 },
-                opacity: { duration: 0.4 },
               }}
             />
           </svg>
