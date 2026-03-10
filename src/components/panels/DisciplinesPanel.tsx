@@ -125,8 +125,12 @@ export default function DisciplinesPanel() {
               <motion.div
                 className="absolute rounded-full border border-dim/20"
                 style={{
-                  width: 'clamp(2.5rem, 6.5vw, 5.5rem)',
-                  height: 'clamp(2.5rem, 6.5vw, 5.5rem)',
+                  width: typeof window !== 'undefined' && window.innerWidth < 768 
+                    ? 'clamp(2.5rem, 12vw, 3.5rem)' 
+                    : 'clamp(4rem, 6.5vw, 5.5rem)',
+                  height: typeof window !== 'undefined' && window.innerWidth < 768 
+                    ? 'clamp(2.5rem, 12vw, 3.5rem)' 
+                    : 'clamp(4rem, 6.5vw, 5.5rem)',
                   background: 'white',
                 }}
                 animate={{
