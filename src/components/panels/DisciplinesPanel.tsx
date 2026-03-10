@@ -34,7 +34,7 @@ const getCirclePositions = () => {
 };
 
 export default function DisciplinesPanel() {
-  const [phase, setPhase] = useState<'waiting' | 'circles' | 'moving' | 'cards'>('waiting');
+  const [phase, setPhase] = useState<'waiting' | 'circles' | 'moving' | 'cards'>('circles');
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const emojiRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
@@ -66,12 +66,9 @@ export default function DisciplinesPanel() {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
-          setPhase('circles');
-          setTimeout(() => {
-            measureCards();
-            setTimeout(() => setPhase('moving'), 2000);
-            setTimeout(() => setPhase('cards'), 2800);
-          }, 100);
+          measureCards();
+          setTimeout(() => setPhase('moving'), 2000);
+          setTimeout(() => setPhase('cards'), 2800);
           observer.disconnect();
         }
       },
@@ -95,7 +92,6 @@ export default function DisciplinesPanel() {
       </div>
 
       {/* Floating emoji circles overlay */}
-      {phase !== 'waiting' && (
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 10 }}>
         {disciplines.map((d, i) => {
           const isMoving = phase === 'moving' || phase === 'cards';
@@ -140,7 +136,6 @@ export default function DisciplinesPanel() {
           );
         })}
       </div>
-      )}
 
       <div className="relative w-full" style={{ zIndex: 1 }}>
         {/* Header */}
