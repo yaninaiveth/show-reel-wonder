@@ -35,13 +35,13 @@ export default function DisciplinesPanel() {
           {disciplines.map((d, i) => (
             <div
               key={i}
-              className="relative bg-card-subtle border border-gold p-[clamp(0.7rem,1.2vw,1.3rem)] flex flex-col gap-1 cursor-default overflow-hidden group transition-colors duration-300 hover:border-gold-strong hover:bg-gold-subtle"
+              className="relative bg-card-subtle border border-ink p-[clamp(0.7rem,1.2vw,1.3rem)] flex flex-col gap-1 cursor-default overflow-hidden group transition-colors duration-300 hover:border-dim hover:bg-paper/90"
             >
               <div className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1">{d.ico}</div>
-              <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper whitespace-pre-line">
+              <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper group-hover:text-ink whitespace-pre-line transition-colors duration-300">
                 {d.name}
               </div>
-              <div className="font-body font-light text-[clamp(0.55rem,0.75vw,0.7rem)] text-dim leading-relaxed opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              <div className="font-body font-light text-[clamp(0.55rem,0.75vw,0.7rem)] text-dim group-hover:text-ink/70 leading-relaxed opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                 {d.desc}
               </div>
             </div>
