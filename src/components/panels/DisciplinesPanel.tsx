@@ -136,7 +136,6 @@ export default function DisciplinesPanel() {
           );
         })}
       </div>
-      )}
 
       <div className="relative w-full" style={{ zIndex: 1 }}>
         {/* Header */}
