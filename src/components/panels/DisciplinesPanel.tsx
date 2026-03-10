@@ -23,6 +23,7 @@ const circlePositions = [
 export default function DisciplinesPanel() {
   const [phase, setPhase] = useState<'circles' | 'moving' | 'cards'>('circles');
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const emojiRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const [cardPositions, setCardPositions] = useState<{ x: number; y: number }[]>([]);
   const hasAnimated = useRef(false);
@@ -33,13 +34,13 @@ export default function DisciplinesPanel() {
     const centerX = sectionRect.width / 2;
     const centerY = sectionRect.height / 2;
 
-    const positions = cardRefs.current.map((ref) => {
+    const positions = emojiRefs.current.map((ref) => {
       if (!ref) return { x: 0, y: 0 };
       const rect = ref.getBoundingClientRect();
       const sRect = sectionRef.current!.getBoundingClientRect();
       return {
-        x: rect.left - sRect.left + rect.width * 0.15 - centerX,
-        y: rect.top - sRect.top + rect.height * 0.2 - centerY,
+        x: rect.left - sRect.left + rect.width / 2 - centerX,
+        y: rect.top - sRect.top + rect.height / 2 - centerY,
       };
     });
     setCardPositions(positions);
@@ -87,26 +88,30 @@ export default function DisciplinesPanel() {
               animate={{
                 x: targetX,
                 y: targetY,
-                scale: isMoving ? 0.7 : 1,
-                opacity: phase === 'cards' ? 0 : 1,
+                scale: isMoving ? 0.45 : 1,
               }}
               transition={{
                 x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
                 y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-                scale: { duration: 0.4 },
-                opacity: { duration: 0.3, delay: 0.2 },
+                scale: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
               }}
             >
-              <div
+              <motion.div
                 className="rounded-full flex items-center justify-center border border-dim/20"
                 style={{
                   width: 'clamp(4rem, 6.5vw, 5.5rem)',
                   height: 'clamp(4rem, 6.5vw, 5.5rem)',
                   background: 'white',
                 }}
+                animate={{
+                  opacity: phase === 'cards' ? 0 : 1,
+                }}
+                transition={{
+                  opacity: { duration: 1.2, ease: 'easeOut' },
+                }}
               >
-                <span className="text-[clamp(1.5rem, 2.8vw, 2.2rem)]">{d.ico}</span>
-              </div>
+                <span className="text-[clamp(1.5rem,2.8vw,2.2rem)]">{d.ico}</span>
+              </motion.div>
             </motion.div>
           );
         })}
@@ -143,7 +148,7 @@ export default function DisciplinesPanel() {
               }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
             >
-              <div className={`text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1 transition-opacity duration-300 ${phase === 'cards' ? 'opacity-100' : 'opacity-0'}`}>{d.ico}</div>
+              <div ref={(el) => { emojiRefs.current[i] = el; }} className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1">{d.ico}</div>
               <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper group-hover:text-ink whitespace-pre-line transition-colors duration-300">
                 {d.name}
               </div>
