@@ -28,7 +28,7 @@ export default function ContactPanel() {
           TOGETHER
         </h2>
 
-        <div className="flex items-start justify-center gap-[clamp(2.5rem,7vw,8rem)] max-sm:gap-7 max-sm:flex-wrap">
+        <div className="flex items-start justify-center gap-[clamp(2.5rem,7vw,8rem)] max-sm:gap-5 max-sm:flex-col max-sm:items-center">
           {contacts.map((c, i) => (
             <a
               key={i}
@@ -38,10 +38,10 @@ export default function ContactPanel() {
               className="flex flex-col items-center gap-2 no-underline text-paper relative group"
             >
               <c.icon className="w-[clamp(1.4rem,2.2vw,2rem)] h-[clamp(1.4rem,2.2vw,2rem)] text-gold opacity-70 group-hover:opacity-100 transition-opacity" />
-              <span className="font-mono text-[0.42rem] tracking-[0.28em] uppercase text-dim group-hover:text-gold2 transition-colors">
+              <span className="font-mono text-[0.42rem] tracking-[0.28em] uppercase text-dim group-hover:text-gold2 transition-colors max-sm:text-paper/60">
                 {c.label}
               </span>
-              <span className="font-body font-normal tracking-wide text-[clamp(0.85rem,1.15vw,1rem)] text-gold2 opacity-85 group-hover:opacity-100 transition-all">
+              <span className="font-body font-normal tracking-wide text-[clamp(0.85rem,1.15vw,1rem)] text-gold2 opacity-85 group-hover:opacity-100 transition-all max-sm:text-paper">
                 {c.value}
               </span>
               <span className="absolute -bottom-1 left-1/2 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full group-hover:left-0" />
