@@ -52,10 +52,8 @@ export default function DisciplinesPanel() {
     // Measure card positions while they're invisible
     const timer1 = setTimeout(() => {
       measureCards();
-      // Start moving emojis to card positions
-      setTimeout(() => setPhase('moving'), 800);
-      // Show cards
-      setTimeout(() => setPhase('cards'), 1600);
+      setTimeout(() => setPhase('moving'), 2000);
+      setTimeout(() => setPhase('cards'), 2800);
     }, 100);
 
     return () => clearTimeout(timer1);
@@ -87,31 +85,27 @@ export default function DisciplinesPanel() {
                 <motion.div
                   key={i}
                   className="absolute flex items-center justify-center"
-                  initial={{ scale: 0, opacity: 0 }}
                   animate={{
-                    scale: isMoving ? 0.8 : 1,
-                    opacity: 1,
                     x: targetX,
                     y: targetY,
+                    scale: isMoving ? 0.8 : 1,
                   }}
                   exit={{ opacity: 0, scale: 0.5 }}
                   transition={{
-                    scale: { duration: 0.4, delay: phase === 'circles' ? i * 0.1 : 0 },
-                    opacity: { duration: 0.3, delay: phase === 'circles' ? i * 0.1 : 0 },
                     x: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
                     y: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                    scale: { duration: 0.4 },
                   }}
                 >
                   <div
-                    className="rounded-full flex items-center justify-center border border-gold/30"
+                    className="rounded-full flex items-center justify-center border border-dim/20"
                     style={{
-                      width: 'clamp(3rem, 5vw, 4.5rem)',
-                      height: 'clamp(3rem, 5vw, 4.5rem)',
-                      background: 'hsl(240, 27%, 8%)',
-                      boxShadow: '0 0 30px hsl(42, 52%, 54%, 0.15)',
+                      width: 'clamp(4rem, 6.5vw, 5.5rem)',
+                      height: 'clamp(4rem, 6.5vw, 5.5rem)',
+                      background: 'white',
                     }}
                   >
-                    <span className="text-[clamp(1.2rem, 2.2vw, 1.8rem)]">{d.ico}</span>
+                    <span className="text-[clamp(1.5rem, 2.8vw, 2.2rem)]">{d.ico}</span>
                   </div>
                 </motion.div>
               );
