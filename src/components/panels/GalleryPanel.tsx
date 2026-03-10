@@ -208,7 +208,7 @@ export default function GalleryPanel() {
             <div
               key={i}
               data-gallery-index={i}
-              className={`relative shrink-0 overflow-hidden border border-gold/20 transition-all duration-300 cursor-pointer ${
+              className={`relative shrink-0 overflow-hidden border border-ink transition-all duration-300 cursor-pointer ${
                 item.aspect === 'landscape' ? 'w-[clamp(22rem,38vw,36rem)]' : 'w-[clamp(14rem,22vw,20rem)]'
               } h-full`}
             >
