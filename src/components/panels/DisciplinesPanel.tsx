@@ -40,7 +40,7 @@ export default function DisciplinesPanel() {
       const sRect = sectionRef.current!.getBoundingClientRect();
       return {
         x: rect.left - sRect.left + 24 - centerX,
-        y: rect.top - sRect.top + 16 - centerY,
+        y: rect.top - sRect.top + 10 - centerY,
       };
     });
     setCardPositions(positions);
