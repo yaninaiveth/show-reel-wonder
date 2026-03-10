@@ -37,11 +37,11 @@ export default function ContactPanel() {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 no-underline text-paper relative group"
             >
-              <c.icon className="w-[clamp(1.4rem,2.2vw,2rem)] h-[clamp(1.4rem,2.2vw,2rem)] text-gold opacity-70 group-hover:opacity-100 transition-opacity max-sm:text-paper max-sm:opacity-100" />
-              <span className="font-mono text-[0.42rem] tracking-[0.28em] uppercase text-dim group-hover:text-gold2 transition-colors max-sm:text-paper/60 max-sm:group-hover:text-paper">
+              <c.icon className="w-[clamp(1.4rem,2.2vw,2rem)] h-[clamp(1.4rem,2.2vw,2rem)] text-paper opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="font-mono text-[0.42rem] tracking-[0.28em] uppercase text-paper/60 group-hover:text-paper transition-colors">
                 {c.label}
               </span>
-              <span className="font-body font-normal tracking-wide text-[clamp(0.85rem,1.15vw,1rem)] text-gold2 opacity-85 group-hover:opacity-100 transition-all max-sm:text-paper max-sm:group-hover:text-paper">
+              <span className="font-body font-normal tracking-wide text-[clamp(0.85rem,1.15vw,1rem)] text-paper opacity-85 group-hover:opacity-100 transition-all">
                 {c.value}
               </span>
               <span className="absolute -bottom-1 left-1/2 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full group-hover:left-0" />
