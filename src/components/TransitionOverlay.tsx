@@ -68,24 +68,23 @@ export default function TransitionOverlay({ isAnimating }: TransitionOverlayProp
             preserveAspectRatio="none"
             style={{ overflow: 'visible' }}
           >
-            <defs>
-              <marker id="arrow-tip" viewBox="0 0 10 10" refX="10" refY="5"
-                markerWidth="3" markerHeight="3" orient="auto">
-                <path d="M0,0 L10,5 L0,10 Z" fill="hsl(42, 40%, 38%)" />
-              </marker>
-            </defs>
+            {/* Filled tapered curved shape — wide at start, narrows to a point */}
             <motion.path
-              d="M-300,400 C200,400 500,650 720,900 C940,1150 1200,1200 1700,1100"
-              stroke="hsl(42, 40%, 38%)"
-              strokeWidth="280"
-              fill="none"
-              strokeLinecap="round"
-              markerEnd="url(#arrow-tip)"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+              d={[
+                'M-300,260',
+                'C200,260 500,510 720,760',
+                'C940,1010 1200,1060 1700,960',
+                'L1700,960',
+                'C1200,1060 940,1150 720,900',
+                'C500,650 200,540 -300,540',
+                'Z',
+              ].join(' ')}
+              fill="hsl(42, 40%, 38%)"
+              initial={{ clipPath: 'inset(0 100% 0 0)' }}
+              animate={{ clipPath: 'inset(0 0% 0 0)' }}
               exit={{ opacity: 0 }}
               transition={{
-                pathLength: {
+                clipPath: {
                   duration: 1.5,
                   ease: [0.76, 0, 0.24, 1],
                   delay: 0.1,
