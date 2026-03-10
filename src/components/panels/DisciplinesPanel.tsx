@@ -12,12 +12,12 @@ const disciplines = [
 
 // Circle layout positions (centered on screen, 2 rows of 3)
 const circlePositions = [
-  { x: -12, y: -6 },
-  { x: 0, y: -6 },
-  { x: 12, y: -6 },
-  { x: -12, y: 6 },
-  { x: 0, y: 6 },
-  { x: 12, y: 6 },
+  { x: -18, y: -8 },
+  { x: 0, y: -8 },
+  { x: 18, y: -8 },
+  { x: -18, y: 8 },
+  { x: 0, y: 8 },
+  { x: 18, y: 8 },
 ];
 
 export default function DisciplinesPanel() {
@@ -145,7 +145,7 @@ export default function DisciplinesPanel() {
               }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
             >
-              <div className="text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1">{d.ico}</div>
+              <div className={`text-[clamp(1.1rem,2vw,1.7rem)] leading-none my-1 transition-opacity duration-300 ${phase === 'cards' ? 'opacity-100' : 'opacity-0'}`}>{d.ico}</div>
               <div className="font-display text-[clamp(0.95rem,2vw,1.65rem)] tracking-wide leading-none text-paper group-hover:text-ink whitespace-pre-line transition-colors duration-300">
                 {d.name}
               </div>
