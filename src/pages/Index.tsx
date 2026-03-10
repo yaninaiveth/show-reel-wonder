@@ -116,6 +116,11 @@ export default function Index() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
+            {/* Glow */}
+            <div
+              className="absolute w-[60vw] h-[60vw] rounded-full bottom-[-22vw] left-1/2 -translate-x-1/2 pointer-events-none"
+              style={{ background: 'radial-gradient(circle, hsl(42, 52%, 54%, 0.07) 0%, transparent 65%)' }}
+            />
             <h2 className="font-display text-[clamp(3rem,11vw,12rem)] leading-[0.82] text-paper">
               {["LET'S", "CREATE", "TOGETHER"].map((word, wi) => (
                 <span key={wi} className={wi === 1 ? 'text-gold' : ''}>
